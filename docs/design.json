@@ -1,0 +1,1155 @@
+Now I have comprehensive information. Let me create the full design guideline JSON for Cursor AI.
+
+# Medilo — Medical & Health NextJS Template: Cursor AI Design Guideline
+
+Here is a complete, production-ready design guideline JSON that Cursor AI can consume to generate or replicate the Medilo template's visual design system, component library, page structure, and interaction patterns.
+
+```json
+{
+  "_meta": {
+    "name": "Medilo Design System — Cursor AI Guideline",
+    "version": "1.0.0",
+    "sourceTemplate": "Medilo - Medical & Health NextJS Template",
+    "themeforestId": 55308184,
+    "author": "ThemeServices",
+    "livePreview": "https://medilo-nextjs.vercel.app/",
+    "generatedFor": "Cursor AI / Windsurf / Copilot / Claude Code",
+    "purpose": "Complete design specification to replicate or adapt the Medilo medical website template in Next.js with Bootstrap 5, SASS, and React components.",
+    "lastUpdated": "2026-04-22"
+  },
+
+  "techStack": {
+    "framework": "Next.js 14.2.15+",
+    "language": "JavaScript (JSX)",
+    "uiFramework": "Bootstrap 5",
+    "styling": "SASS / SCSS + Custom CSS",
+    "animations": "WOW.js + Custom CSS3 Animations",
+    "slider": "Slick Slider / Swiper",
+    "icons": ["Flaticon", "Font Awesome 6"],
+    "fonts": "Google Fonts",
+    "jquery": false,
+    "responsive": true,
+    "seo": "Semantic HTML5, meta tags, Open Graph",
+    "deployment": "Vercel"
+  },
+
+  "designPhilosophy": {
+    "style": "Clean, modern, minimal medical aesthetic",
+    "mood": "Professional, trustworthy, calming, clinical",
+    "cornerStyle": "Rounded corners (8px-16px) on cards and buttons",
+    "shadowStyle": "Soft box-shadows for depth and elevation",
+    "imageStyle": "High-quality lifestyle/medical photography with subtle overlays",
+    "layoutGrid": "Bootstrap 5 12-column grid, max-width 1320px container",
+    "whitespace": "Generous padding (80px-120px section spacing)",
+    "directionality": "LTR (Left to Right)"
+  },
+
+  "colorPalette": {
+    "primary": {
+      "name": "Medical Blue",
+      "hex": "#0A2540",
+      "rgb": "10, 37, 64",
+      "usage": "Headings, navigation text, footer background, dark overlays",
+      "description": "Deep navy blue conveying trust and professionalism"
+    },
+    "secondary": {
+      "name": "Healthcare Teal / Cyan",
+      "hex": "#00C0E8",
+      "rgb": "0, 192, 232",
+      "usage": "Accent color, buttons, links, hover states, icons, highlights, badges",
+      "description": "Bright teal that represents health, cleanliness, and modernity"
+    },
+    "tertiary": {
+      "name": "Soft Blue",
+      "hex": "#E8F6FC",
+      "rgb": "232, 246, 252",
+      "usage": "Section backgrounds, card backgrounds, light panels",
+      "description": "Very light teal/blue wash for alternating section backgrounds"
+    },
+    "accent": {
+      "name": "Warm Green",
+      "hex": "#28A745",
+      "rgb": "40, 167, 69",
+      "usage": "Success states, checkmarks, health indicators, CTA alternates"
+    },
+    "white": {
+      "hex": "#FFFFFF",
+      "usage": "Primary backgrounds, card surfaces, button text on dark"
+    },
+    "offWhite": {
+      "hex": "#F7F9FC",
+      "usage": "Alternate section backgrounds, subtle separation"
+    },
+    "lightGray": {
+      "hex": "#F0F0F0",
+      "usage": "Dividers, borders, input field backgrounds"
+    },
+    "mediumGray": {
+      "hex": "#8C8C8C",
+      "usage": "Subtitle text, meta info, secondary paragraph text"
+    },
+    "darkGray": {
+      "hex": "#555555",
+      "usage": "Body paragraph text"
+    },
+    "bodyText": {
+      "hex": "#666666",
+      "usage": "Default paragraph and description text"
+    },
+    "black": {
+      "hex": "#111111",
+      "usage": "Strong headings when not using navy"
+    },
+    "gradients": {
+      "primaryGradient": {
+        "direction": "135deg",
+        "stops": ["#0A2540 0%", "#00C0E8 100%"],
+        "usage": "Hero overlays, CTA buttons, banner backgrounds"
+      },
+      "lightGradient": {
+        "direction": "180deg",
+        "stops": ["#FFFFFF 0%", "#E8F6FC 100%"],
+        "usage": "Section fade backgrounds"
+      },
+      "overlayGradient": {
+        "direction": "to right",
+        "stops": ["rgba(10,37,64,0.85) 0%", "rgba(0,192,232,0.6) 100%"],
+        "usage": "Image overlays on hero and video sections"
+      }
+    }
+  },
+
+  "typography": {
+    "primaryFont": {
+      "family": "'Poppins', sans-serif",
+      "weights": [300, 400, 500, 600, 700, 800],
+      "usage": "Headings, navigation, buttons, hero text, card titles",
+      "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    },
+    "secondaryFont": {
+      "family": "'Rubik', sans-serif",
+      "weights": [300, 400, 500, 600, 700],
+      "usage": "Body text, paragraphs, descriptions, form inputs, meta text",
+      "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
+    },
+    "scale": {
+      "heroTitle": {
+        "fontSize": "56px",
+        "fontWeight": 700,
+        "lineHeight": "1.2",
+        "fontFamily": "Poppins",
+        "color": "#FFFFFF",
+        "responsive": { "tablet": "42px", "mobile": "32px" }
+      },
+      "sectionTitle": {
+        "fontSize": "42px",
+        "fontWeight": 700,
+        "lineHeight": "1.3",
+        "fontFamily": "Poppins",
+        "color": "#0A2540",
+        "marginBottom": "20px",
+        "responsive": { "tablet": "34px", "mobile": "28px" }
+      },
+      "sectionSubtitle": {
+        "fontSize": "14px",
+        "fontWeight": 600,
+        "lineHeight": "1.5",
+        "fontFamily": "Rubik",
+        "color": "#00C0E8",
+        "textTransform": "uppercase",
+        "letterSpacing": "2px",
+        "marginBottom": "10px"
+      },
+      "cardTitle": {
+        "fontSize": "22px",
+        "fontWeight": 600,
+        "lineHeight": "1.4",
+        "fontFamily": "Poppins",
+        "color": "#0A2540"
+      },
+      "bodyText": {
+        "fontSize": "16px",
+        "fontWeight": 400,
+        "lineHeight": "1.75",
+        "fontFamily": "Rubik",
+        "color": "#666666"
+      },
+      "smallText": {
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "lineHeight": "1.6",
+        "fontFamily": "Rubik",
+        "color": "#8C8C8C"
+      },
+      "buttonText": {
+        "fontSize": "15px",
+        "fontWeight": 600,
+        "fontFamily": "Poppins",
+        "textTransform": "capitalize",
+        "letterSpacing": "0.5px"
+      },
+      "navLink": {
+        "fontSize": "16px",
+        "fontWeight": 500,
+        "fontFamily": "Poppins",
+        "color": "#0A2540",
+        "textTransform": "capitalize"
+      },
+      "counterNumber": {
+        "fontSize": "48px",
+        "fontWeight": 700,
+        "fontFamily": "Poppins",
+        "color": "#00C0E8"
+      },
+      "counterLabel": {
+        "fontSize": "16px",
+        "fontWeight": 400,
+        "fontFamily": "Rubik",
+        "color": "#666666"
+      }
+    }
+  },
+
+  "spacing": {
+    "sectionPaddingY": "100px",
+    "sectionPaddingYMobile": "60px",
+    "containerMaxWidth": "1320px",
+    "containerPaddingX": "15px",
+    "cardPadding": "30px",
+    "cardGap": "30px",
+    "componentGapSm": "15px",
+    "componentGapMd": "30px",
+    "componentGapLg": "60px",
+    "headingToContentGap": "20px",
+    "subtitleToTitleGap": "8px"
+  },
+
+  "borderRadius": {
+    "none": "0px",
+    "small": "4px",
+    "medium": "8px",
+    "large": "12px",
+    "xlarge": "16px",
+    "pill": "50px",
+    "circle": "50%"
+  },
+
+  "shadows": {
+    "cardShadow": "0 10px 40px rgba(0, 0, 0, 0.08)",
+    "cardHoverShadow": "0 20px 60px rgba(0, 192, 232, 0.15)",
+    "navShadow": "0 2px 20px rgba(0, 0, 0, 0.06)",
+    "buttonShadow": "0 8px 25px rgba(0, 192, 232, 0.3)",
+    "imageShadow": "0 15px 50px rgba(0, 0, 0, 0.12)"
+  },
+
+  "buttons": {
+    "primary": {
+      "background": "#00C0E8",
+      "color": "#FFFFFF",
+      "border": "none",
+      "borderRadius": "50px",
+      "padding": "14px 36px",
+      "fontSize": "15px",
+      "fontWeight": 600,
+      "fontFamily": "Poppins",
+      "textTransform": "capitalize",
+      "boxShadow": "0 8px 25px rgba(0, 192, 232, 0.3)",
+      "transition": "all 0.4s ease",
+      "hover": {
+        "background": "#0A2540",
+        "color": "#FFFFFF",
+        "boxShadow": "0 8px 25px rgba(10, 37, 64, 0.3)",
+        "transform": "translateY(-2px)"
+      }
+    },
+    "secondary": {
+      "background": "transparent",
+      "color": "#0A2540",
+      "border": "2px solid #0A2540",
+      "borderRadius": "50px",
+      "padding": "12px 34px",
+      "fontSize": "15px",
+      "fontWeight": 600,
+      "fontFamily": "Poppins",
+      "transition": "all 0.4s ease",
+      "hover": {
+        "background": "#00C0E8",
+        "color": "#FFFFFF",
+        "borderColor": "#00C0E8"
+      }
+    },
+    "outline": {
+      "background": "transparent",
+      "color": "#00C0E8",
+      "border": "2px solid #00C0E8",
+      "borderRadius": "50px",
+      "padding": "12px 34px",
+      "hover": {
+        "background": "#00C0E8",
+        "color": "#FFFFFF"
+      }
+    },
+    "heroButton": {
+      "background": "#00C0E8",
+      "color": "#FFFFFF",
+      "borderRadius": "50px",
+      "padding": "16px 40px",
+      "fontSize": "16px",
+      "fontWeight": 700,
+      "icon": "arrow-right",
+      "iconPosition": "right"
+    },
+    "textLink": {
+      "color": "#00C0E8",
+      "fontWeight": 600,
+      "textDecoration": "none",
+      "hover": {
+        "color": "#0A2540",
+        "textDecoration": "underline"
+      }
+    }
+  },
+
+  "header": {
+    "description": "Sticky header with top info bar and main navigation. Transparent on hero, turns white/solid on scroll.",
+    "variants": 3,
+    "topBar": {
+      "visible": true,
+      "height": "44px",
+      "background": "#0A2540",
+      "textColor": "#FFFFFF",
+      "fontSize": "13px",
+      "fontFamily": "Rubik",
+      "layout": {
+        "left": {
+          "items": [
+            { "type": "address", "icon": "fa-location-dot", "text": "123 Medical Street, City" },
+            { "type": "email", "icon": "fa-envelope", "text": "info@medilo.com" }
+          ]
+        },
+        "right": {
+          "items": [
+            { "type": "phone", "icon": "fa-phone", "text": "(+2) 56 54 1453" },
+            { "type": "socialIcons", "platforms": ["facebook", "twitter", "linkedin", "instagram"] }
+          ]
+        }
+      },
+      "socialIconStyle": {
+        "color": "#FFFFFF",
+        "fontSize": "14px",
+        "gap": "12px",
+        "hoverColor": "#00C0E8"
+      }
+    },
+    "mainNav": {
+      "height": "90px",
+      "background": "#FFFFFF",
+      "backgroundOnHero": "transparent",
+      "backgroundOnScroll": "rgba(255, 255, 255, 0.98)",
+      "boxShadowOnScroll": "0 2px 20px rgba(0, 0, 0, 0.06)",
+      "transition": "all 0.3s ease",
+      "logo": {
+        "position": "left",
+        "maxWidth": "160px",
+        "maxHeight": "50px",
+        "src": "/images/logo.png",
+        "alt": "Medilo Medical"
+      },
+      "menuItems": {
+        "position": "center-right",
+        "items": [
+          { "label": "Home", "href": "/", "hasDropdown": true, "dropdownItems": ["Home 1", "Home 2", "Home 3"] },
+          { "label": "About", "href": "/about" },
+          { "label": "Service", "href": "/services", "hasDropdown": true, "dropdownItems": ["Services", "Service Details"] },
+          { "label": "Pages", "href": "#", "hasDropdown": true, "dropdownItems": ["Team", "Team Details", "Portfolio", "Timetable", "Appointments", "Error Page"] },
+          { "label": "Blog", "href": "/blog", "hasDropdown": true, "dropdownItems": ["Blog Grid", "Blog Details"] },
+          { "label": "Contact", "href": "/contact" }
+        ],
+        "style": {
+          "fontSize": "16px",
+          "fontWeight": 500,
+          "fontFamily": "Poppins",
+          "color": "#0A2540",
+          "gap": "30px",
+          "hoverColor": "#00C0E8",
+          "activeColor": "#00C0E8",
+          "activeIndicator": "color-change",
+          "transition": "color 0.3s ease"
+        },
+        "dropdown": {
+          "background": "#FFFFFF",
+          "borderTop": "3px solid #00C0E8",
+          "boxShadow": "0 10px 40px rgba(0,0,0,0.1)",
+          "padding": "15px 0",
+          "itemPadding": "8px 25px",
+          "itemFontSize": "15px",
+          "itemColor": "#555555",
+          "itemHoverColor": "#00C0E8",
+          "itemHoverBg": "#F7F9FC",
+          "minWidth": "220px",
+          "animation": "fadeInDown 0.3s ease"
+        }
+      },
+      "ctaButton": {
+        "visible": true,
+        "text": "Booking Now",
+        "href": "/appointments",
+        "style": "primary"
+      },
+      "searchIcon": {
+        "visible": true,
+        "color": "#0A2540",
+        "hoverColor": "#00C0E8"
+      }
+    },
+    "mobileNav": {
+      "breakpoint": "992px",
+      "hamburgerIcon": {
+        "color": "#0A2540",
+        "size": "28px"
+      },
+      "slidePanel": {
+        "direction": "right",
+        "width": "300px",
+        "background": "#FFFFFF",
+        "overlay": "rgba(0,0,0,0.5)"
+      }
+    }
+  },
+
+  "sections": {
+    "hero": {
+      "id": "hero-slider",
+      "description": "Full-width hero slider with large background images, overlay gradient, headline text, subtitle, phone number callout, and two CTA buttons. Slider navigation with prev/next arrows.",
+      "type": "full-width-slider",
+      "height": "100vh",
+      "minHeight": "700px",
+      "slides": [
+        {
+          "backgroundImage": "/images/hero/hero-1.jpg",
+          "overlay": "linear-gradient(135deg, rgba(10,37,64,0.85) 0%, rgba(0,192,232,0.4) 100%)",
+          "subtitle": "Receive Medical Service.",
+          "title": "We Hospital Doctors Patients Service.",
+          "phone": "(+2) 56 54 1453",
+          "buttons": [
+            { "text": "Contact Now", "href": "/contact", "style": "primary" },
+            { "text": "Discover More", "href": "/about", "style": "outline-white" }
+          ]
+        }
+      ],
+      "animation": {
+        "titleEntry": "fadeInUp",
+        "subtitleEntry": "fadeInDown",
+        "buttonEntry": "fadeInUp",
+        "delay": "0.3s"
+      },
+      "slider": {
+        "autoplay": true,
+        "autoplaySpeed": 5000,
+        "arrows": true,
+        "dots": false,
+        "fade": true,
+        "arrowStyle": {
+          "shape": "circle",
+          "size": "50px",
+          "background": "rgba(255,255,255,0.2)",
+          "color": "#FFFFFF",
+          "hoverBackground": "#00C0E8"
+        }
+      }
+    },
+
+    "floatingTeamBar": {
+      "id": "team-bar",
+      "description": "A horizontal bar below the hero showing team photos, a tagline, and a booking CTA. It appears to float above the next section with negative margin.",
+      "background": "#FFFFFF",
+      "boxShadow": "0 10px 40px rgba(0,0,0,0.1)",
+      "borderRadius": "12px",
+      "padding": "25px 40px",
+      "marginTop": "-80px",
+      "zIndex": 10,
+      "layout": "flex-row space-between",
+      "content": {
+        "left": {
+          "teamPhotos": {
+            "type": "overlapping-circles",
+            "count": 5,
+            "size": "50px",
+            "overlap": "-15px",
+            "borderColor": "#FFFFFF",
+            "borderWidth": "3px"
+          },
+          "text": "Meet The Team Support Medical Service."
+        },
+        "right": {
+          "button": { "text": "Booking Now", "href": "/appointments", "style": "primary" }
+        }
+      }
+    },
+
+    "about": {
+      "id": "about-section",
+      "description": "Two-column layout. Left side: large image with floating experience badge. Right side: subtitle, title, description, two feature boxes (Client Support, Doctor Support), read more link, and stats counter row.",
+      "layout": "two-column",
+      "columns": { "left": "col-lg-6", "right": "col-lg-6" },
+      "sectionPadding": "100px 0",
+      "leftColumn": {
+        "type": "image-with-badge",
+        "image": {
+          "src": "/images/about/about-1.jpg",
+          "borderRadius": "12px",
+          "boxShadow": "0 15px 50px rgba(0,0,0,0.12)"
+        },
+        "badge": {
+          "position": "top-left",
+          "background": "#00C0E8",
+          "color": "#FFFFFF",
+          "borderRadius": "12px",
+          "padding": "20px 25px",
+          "content": {
+            "label": "How We Work",
+            "number": "26+",
+            "sublabel": "Experience"
+          }
+        }
+      },
+      "rightColumn": {
+        "subtitle": "OUR ABOUT US",
+        "title": "More Than 26+ Years About Provide Medical.",
+        "description": "We are privileged to work with hundreds of future-thinking medial...",
+        "featureBoxes": [
+          {
+            "icon": "flaticon-customer-support",
+            "title": "Client Support",
+            "description": "But must explain to you medical of and pain was.",
+            "style": {
+              "iconColor": "#00C0E8",
+              "iconBg": "#E8F6FC",
+              "borderRadius": "8px"
+            }
+          },
+          {
+            "icon": "flaticon-doctor",
+            "title": "Doctor Support",
+            "description": "But must explain to you medical of and pain was."
+          }
+        ],
+        "readMoreLink": { "text": "About More", "href": "/about", "icon": "arrow-right" }
+      },
+      "counters": {
+        "layout": "4-column-row",
+        "background": "#FFFFFF",
+        "items": [
+          { "number": "567+", "label": "Active Clients" },
+          { "number": "23K+", "label": "Team Support" },
+          { "number": "241+", "label": "Projects Complete" },
+          { "number": "16K+", "label": "Award Winner" }
+        ],
+        "counterStyle": {
+          "numberSize": "48px",
+          "numberWeight": 700,
+          "numberColor": "#00C0E8",
+          "labelSize": "16px",
+          "labelColor": "#666666",
+          "animation": "countUp",
+          "animationDuration": "2s",
+          "separator": "vertical-line"
+        }
+      }
+    },
+
+    "services": {
+      "id": "services-section",
+      "description": "Section with numbered service cards in a 4-column grid (2 rows of 4). Each card has a number, icon, title, short description, and a hover reveal of a learn more link.",
+      "background": "#F7F9FC",
+      "sectionPadding": "100px 0",
+      "subtitle": "OUR BEST SERVICE",
+      "title": "High-Quality Services This Doctor",
+      "layout": "4-column-grid",
+      "totalServices": 8,
+      "serviceCard": {
+        "background": "#FFFFFF",
+        "borderRadius": "12px",
+        "padding": "35px 30px",
+        "boxShadow": "0 5px 20px rgba(0,0,0,0.05)",
+        "textAlign": "center",
+        "transition": "all 0.4s ease",
+        "hover": {
+          "transform": "translateY(-8px)",
+          "boxShadow": "0 20px 60px rgba(0, 192, 232, 0.15)",
+          "borderBottom": "3px solid #00C0E8"
+        },
+        "elements": {
+          "number": {
+            "fontSize": "14px",
+            "fontWeight": 700,
+            "color": "#00C0E8",
+            "background": "#E8F6FC",
+            "borderRadius": "50%",
+            "width": "36px",
+            "height": "36px",
+            "display": "flex-center"
+          },
+          "icon": {
+            "size": "50px",
+            "color": "#00C0E8",
+            "marginBottom": "15px"
+          },
+          "title": {
+            "fontSize": "20px",
+            "fontWeight": 600,
+            "color": "#0A2540"
+          },
+          "description": {
+            "fontSize": "15px",
+            "color": "#666666",
+            "lineHeight": "1.6"
+          }
+        }
+      },
+      "servicesList": [
+        { "number": "01", "icon": "flaticon-pharmacy", "title": "Pharmacology" },
+        { "number": "02", "icon": "flaticon-bone", "title": "Orthopedic" },
+        { "number": "03", "icon": "flaticon-blood-test", "title": "Hematology" },
+        { "number": "04", "icon": "flaticon-surgery", "title": "Plastic Surgery" },
+        { "number": "05", "icon": "flaticon-brain", "title": "Neurology" },
+        { "number": "06", "icon": "flaticon-eye", "title": "Ophthalmology" },
+        { "number": "07", "icon": "flaticon-tooth", "title": "Dental Care" },
+        { "number": "08", "icon": "flaticon-heart", "title": "Cardiology" }
+      ],
+      "bottomBanner": {
+        "description": "Full-width banner below services with a scrolling text marquee",
+        "background": "#00C0E8",
+        "textColor": "#FFFFFF",
+        "text": "Delivering tomorrow's health care for your family.",
+        "animation": "marquee-scroll",
+        "link": { "text": "SEE MORE", "href": "/services" }
+      }
+    },
+
+    "teamMembers": {
+      "id": "team-section",
+      "description": "Doctor team carousel with photo cards. Each card shows doctor photo, name, specialty, and social media links on hover.",
+      "background": "#FFFFFF",
+      "sectionPadding": "100px 0",
+      "subtitle": "OUR TEAM MEMBER",
+      "title": "Meet Our Specialist This Doctor Meeting",
+      "type": "carousel",
+      "slidesPerView": { "desktop": 4, "tablet": 2, "mobile": 1 },
+      "slideGap": "30px",
+      "navigation": { "arrows": true, "dots": true },
+      "teamCard": {
+        "borderRadius": "12px",
+        "overflow": "hidden",
+        "boxShadow": "0 5px 20px rgba(0,0,0,0.08)",
+        "transition": "all 0.4s ease",
+        "hover": {
+          "transform": "translateY(-5px)",
+          "boxShadow": "0 15px 40px rgba(0,0,0,0.12)"
+        },
+        "image": {
+          "aspectRatio": "3:4",
+          "objectFit": "cover",
+          "filter": "none",
+          "hoverFilter": "brightness(0.9)"
+        },
+        "content": {
+          "padding": "20px",
+          "textAlign": "center",
+          "name": { "fontSize": "20px", "fontWeight": 600, "color": "#0A2540" },
+          "specialty": { "fontSize": "14px", "color": "#00C0E8", "fontWeight": 400 }
+        },
+        "socialOverlay": {
+          "position": "absolute-bottom-of-image",
+          "background": "rgba(0, 192, 232, 0.9)",
+          "icons": ["facebook", "twitter", "linkedin", "instagram"],
+          "iconColor": "#FFFFFF",
+          "animation": "slide-up-on-hover"
+        }
+      },
+      "members": [
+        { "name": "Dr. Norma Pedric", "role": "Neurologist", "image": "/images/team/team-1.jpg" },
+        { "name": "Dr. James Lewis", "role": "Neurologist", "image": "/images/team/team-2.jpg" },
+        { "name": "Dr. Sophia Anderson", "role": "Neurologist", "image": "/images/team/team-3.jpg" },
+        { "name": "Dr. Michael Thompson", "role": "Neurologist", "image": "/images/team/team-4.jpg" }
+      ],
+      "sideContactWidget": {
+        "description": "A vertical floating sidebar on the right with numbered steps (5,4,3,2,1) and a Contact button",
+        "position": "fixed-right",
+        "background": "#0A2540",
+        "color": "#FFFFFF",
+        "borderRadius": "8px 0 0 8px",
+        "items": [5, 4, 3, 2, 1],
+        "contactButton": { "text": "Contact", "href": "/contact" }
+      }
+    },
+
+    "whyChooseUs": {
+      "id": "why-choose-section",
+      "description": "Two-column section. Left: large image or video. Right: subtitle, title, 6 feature items in a 2x3 grid with icons.",
+      "background": "#F7F9FC",
+      "sectionPadding": "100px 0",
+      "subtitle": "WHY CHOOSE US",
+      "title": "Medical Ready To Get This Health Solution.",
+      "layout": "two-column",
+      "featureGrid": {
+        "columns": 2,
+        "gap": "25px",
+        "items": [
+          { "icon": "flaticon-care", "title": "Expert Care" },
+          { "icon": "flaticon-emergency", "title": "Emergency Help" },
+          { "icon": "flaticon-doctor-2", "title": "Qualified Doctors" },
+          { "icon": "flaticon-advice", "title": "Medical Advices" },
+          { "icon": "flaticon-research", "title": "Medical Research" },
+          { "icon": "flaticon-price-tag", "title": "Affordable Prices" }
+        ]
+      },
+      "featureItemStyle": {
+        "background": "#FFFFFF",
+        "borderRadius": "12px",
+        "padding": "25px",
+        "boxShadow": "0 5px 15px rgba(0,0,0,0.05)",
+        "iconSize": "40px",
+        "iconColor": "#00C0E8",
+        "iconBackground": "#E8F6FC",
+        "iconBorderRadius": "50%",
+        "titleSize": "18px",
+        "titleWeight": 600,
+        "titleColor": "#0A2540",
+        "hover": {
+          "borderLeft": "4px solid #00C0E8",
+          "boxShadow": "0 10px 30px rgba(0,192,232,0.12)"
+        }
+      }
+    },
+
+    "portfolio": {
+      "id": "portfolio-section",
+      "description": "Filterable masonry/grid gallery of project images with category tabs (Medical, Neurology, Cardiology, Dental). Image cards with overlay showing title and numbering.",
+      "background": "#FFFFFF",
+      "sectionPadding": "100px 0",
+      "subtitle": "OUR PORTFOLIO",
+      "title": "All The Great Work That Medical Service",
+      "filterTabs": {
+        "items": ["Medical", "Neurology", "Cardiology", "Dental"],
+        "activeStyle": {
+          "background": "#00C0E8",
+          "color": "#FFFFFF",
+          "borderRadius": "50px"
+        },
+        "inactiveStyle": {
+          "background": "transparent",
+          "color": "#666666",
+          "border": "1px solid #E0E0E0",
+          "borderRadius": "50px"
+        }
+      },
+      "gridLayout": "masonry-3-columns",
+      "cardStyle": {
+        "borderRadius": "12px",
+        "overflow": "hidden",
+        "hoverOverlay": {
+          "background": "rgba(0, 192, 232, 0.85)",
+          "color": "#FFFFFF",
+          "animation": "fade-in-scale"
+        }
+      }
+    },
+
+    "videoSection": {
+      "id": "video-section",
+      "description": "Full-width background image section with centered play button and overlay. Title and description text below or overlaid.",
+      "background": "background-image with overlay",
+      "overlay": "linear-gradient(135deg, rgba(10,37,64,0.8), rgba(0,192,232,0.5))",
+      "sectionPadding": "150px 0",
+      "textAlign": "center",
+      "subtitle": "OUR WATCH VIDEO",
+      "title": "Professional Medical Care Measure Medical.",
+      "titleColor": "#FFFFFF",
+      "playButton": {
+        "size": "80px",
+        "background": "#FFFFFF",
+        "iconColor": "#00C0E8",
+        "borderRadius": "50%",
+        "animation": "pulse-ring",
+        "pulseColor": "rgba(255,255,255,0.3)"
+      }
+    },
+
+    "serviceOfferings": {
+      "id": "offerings-section",
+      "description": "Two-column layout. Left: vertical tabs listing offerings (Medical Advice, Certified Doctors, etc.). Right: content area with image, title, description, checkmark list.",
+      "background": "#FFFFFF",
+      "sectionPadding": "100px 0",
+      "subtitle": "Service Offerings",
+      "title": "Explore Our Service Offerings",
+      "layout": "tabs-left-content-right",
+      "tabs": {
+        "items": ["Medical Advice", "Certified Doctors", "Success of Treatment", "Modern Technology"],
+        "activeStyle": {
+          "background": "#00C0E8",
+          "color": "#FFFFFF",
+          "borderRadius": "8px"
+        },
+        "inactiveStyle": {
+          "background": "#F7F9FC",
+          "color": "#0A2540"
+        }
+      },
+      "contentArea": {
+        "image": { "borderRadius": "12px" },
+        "checkmarks": {
+          "icon": "fa-check-circle",
+          "iconColor": "#00C0E8",
+          "textColor": "#555555"
+        }
+      }
+    },
+
+    "appointmentForm": {
+      "id": "appointment-section",
+      "description": "Two-column section. Left: background image or illustration. Right: appointment booking form with fields.",
+      "background": "#0A2540",
+      "sectionPadding": "100px 0",
+      "subtitle": "CONTACT US",
+      "subtitleColor": "#00C0E8",
+      "title": "Make An Appointment Apply For Treatments",
+      "titleColor": "#FFFFFF",
+      "form": {
+        "fields": [
+          { "type": "text", "placeholder": "Your Name", "icon": "fa-user" },
+          { "type": "email", "placeholder": "Email Address", "icon": "fa-envelope" },
+          { "type": "tel", "placeholder": "Phone Number", "icon": "fa-phone" },
+          { "type": "select", "placeholder": "Select Department", "options": ["Pharmacology", "Orthopedic", "Neurology", "Dental"] },
+          { "type": "date", "placeholder": "Appointment Date" },
+          { "type": "textarea", "placeholder": "Your Message" }
+        ],
+        "fieldStyle": {
+          "background": "rgba(255,255,255,0.1)",
+          "border": "1px solid rgba(255,255,255,0.2)",
+          "borderRadius": "8px",
+          "color": "#FFFFFF",
+          "placeholderColor": "rgba(255,255,255,0.5)",
+          "padding": "14px 20px",
+          "focusBorder": "#00C0E8"
+        },
+        "submitButton": {
+          "text": "Send Request",
+          "style": "primary",
+          "fullWidth": true
+        }
+      }
+    },
+
+    "blog": {
+      "id": "blog-section",
+      "description": "Blog carousel showing 3 cards per view. Each card: image with category tag, date, author meta, title, read more link.",
+      "background": "#F7F9FC",
+      "sectionPadding": "100px 0",
+      "subtitle": "OUR LARGEST BLOG",
+      "title": "Latest Posts & Articles",
+      "type": "carousel",
+      "slidesPerView": { "desktop": 3, "tablet": 2, "mobile": 1 },
+      "blogCard": {
+        "background": "#FFFFFF",
+        "borderRadius": "12px",
+        "overflow": "hidden",
+        "boxShadow": "0 5px 20px rgba(0,0,0,0.06)",
+        "image": {
+          "aspectRatio": "16:10",
+          "overlay": false,
+          "categoryBadge": {
+            "position": "top-left",
+            "background": "#00C0E8",
+            "color": "#FFFFFF",
+            "borderRadius": "4px",
+            "padding": "4px 12px",
+            "fontSize": "12px"
+          }
+        },
+        "content": {
+          "padding": "25px",
+          "meta": {
+            "date": { "icon": "fa-calendar", "color": "#8C8C8C", "fontSize": "13px" },
+            "author": { "icon": "fa-user", "color": "#8C8C8C", "fontSize": "13px" },
+            "comments": { "icon": "fa-comment", "color": "#8C8C8C", "fontSize": "13px" }
+          },
+          "title": { "fontSize": "20px", "fontWeight": 600, "color": "#0A2540", "hoverColor": "#00C0E8" },
+          "readMore": { "text": "Read More", "color": "#00C0E8", "icon": "fa-arrow-right" }
+        }
+      }
+    }
+  },
+
+  "footer": {
+    "description": "Dark navy footer with 4 columns: About/Logo, Quick Links, Our Services, Contact Info. Below: copyright bar with social icons.",
+    "background": "#0A2540",
+    "textColor": "rgba(255,255,255,0.7)",
+    "headingColor": "#FFFFFF",
+    "padding": "80px 0 30px",
+    "columns": {
+      "col1_about": {
+        "width": "col-lg-3",
+        "logo": { "src": "/images/logo-white.png", "maxWidth": "150px" },
+        "description": "We are privileged to work with hundreds of future-thinking medical professionals.",
+        "socialIcons": {
+          "platforms": ["facebook", "twitter", "linkedin", "instagram"],
+          "style": {
+            "shape": "rounded-square",
+            "size": "38px",
+            "background": "rgba(255,255,255,0.1)",
+            "color": "#FFFFFF",
+            "hoverBackground": "#00C0E8",
+            "gap": "10px"
+          }
+        }
+      },
+      "col2_quickLinks": {
+        "width": "col-lg-3",
+        "heading": "Quick Links",
+        "links": ["About Us", "Our Services", "Our Team", "Portfolio", "Contact"]
+      },
+      "col3_services": {
+        "width": "col-lg-3",
+        "heading": "Our Services",
+        "links": ["Pharmacology", "Orthopedic", "Hematology", "Neurology", "Cardiology"]
+      },
+      "col4_contact": {
+        "width": "col-lg-3",
+        "heading": "Contact Info",
+        "items": [
+          { "icon": "fa-location-dot", "text": "123 Medical Street, City" },
+          { "icon": "fa-phone", "text": "(+2) 56 54 1453" },
+          { "icon": "fa-envelope", "text": "info@medilo.com" },
+          { "icon": "fa-clock", "text": "Mon - Sat: 8:00 - 17:00" }
+        ]
+      }
+    },
+    "linkStyle": {
+      "color": "rgba(255,255,255,0.6)",
+      "fontSize": "15px",
+      "hoverColor": "#00C0E8",
+      "lineHeight": "2.2",
+      "bulletIcon": "fa-chevron-right",
+      "bulletColor": "#00C0E8"
+    },
+    "copyrightBar": {
+      "borderTop": "1px solid rgba(255,255,255,0.1)",
+      "padding": "20px 0",
+      "marginTop": "40px",
+      "text": "© 2026 Medilo. All Rights Reserved.",
+      "textColor": "rgba(255,255,255,0.5)",
+      "fontSize": "14px",
+      "textAlign": "center"
+    }
+  },
+
+  "innerPages": {
+    "pageBanner": {
+      "description": "Page header/breadcrumb banner used on all inner pages. Background image with dark overlay.",
+      "height": "350px",
+      "background": "background-image + overlay",
+      "overlay": "rgba(10, 37, 64, 0.85)",
+      "textAlign": "center",
+      "title": { "fontSize": "42px", "fontWeight": 700, "color": "#FFFFFF" },
+      "breadcrumb": {
+        "fontSize": "15px",
+        "color": "rgba(255,255,255,0.7)",
+        "separator": "/",
+        "activeColor": "#00C0E8"
+      }
+    },
+    "pageList": [
+      { "name": "Home 1", "path": "/", "description": "Default homepage with hero slider" },
+      { "name": "Home 2", "path": "/home-2", "description": "Alternate homepage layout" },
+      { "name": "Home 3", "path": "/home-3", "description": "Third homepage variant" },
+      { "name": "About", "path": "/about", "description": "About us page with stats and team" },
+      { "name": "Services", "path": "/services", "description": "All services grid" },
+      { "name": "Service Details", "path": "/services/[slug]", "description": "Individual service page" },
+      { "name": "Team", "path": "/team", "description": "All doctors grid" },
+      { "name": "Team Details", "path": "/team/[slug]", "description": "Individual doctor profile" },
+      { "name": "Portfolio / Projects", "path": "/projects", "description": "Filterable project gallery" },
+      { "name": "Timetable", "path": "/timetable", "description": "Weekly schedule table" },
+      { "name": "Appointments", "path": "/appointments", "description": "Booking form page" },
+      { "name": "Blog", "path": "/blog", "description": "Blog listing grid" },
+      { "name": "Blog Details", "path": "/blog/[slug]", "description": "Single blog post with sidebar" },
+      { "name": "Contact", "path": "/contact", "description": "Contact form + map + info" },
+      { "name": "404 Error", "path": "/404", "description": "Custom error page" }
+    ]
+  },
+
+  "animations": {
+    "library": "WOW.js + custom CSS3",
+    "defaults": {
+      "duration": "1s",
+      "delay": "0s",
+      "offset": 100,
+      "once": true
+    },
+    "sectionAnimations": {
+      "sectionTitle": "fadeInUp",
+      "sectionSubtitle": "fadeInDown",
+      "cardStagger": {
+        "type": "fadeInUp",
+        "staggerDelay": "0.1s"
+      },
+      "imageLeft": "fadeInLeft",
+      "imageRight": "fadeInRight",
+      "counters": "fadeIn",
+      "buttons": "fadeInUp"
+    },
+    "microInteractions": {
+      "buttonHover": "translateY(-2px) + shadow-expand",
+      "cardHover": "translateY(-8px) + shadow-enhance",
+      "linkHover": "color-transition 0.3s",
+      "iconHover": "scale(1.1) + color-change",
+      "imageHover": "scale(1.05) inside overflow-hidden"
+    }
+  },
+
+  "responsive": {
+    "breakpoints": {
+      "xs": "0px",
+      "sm": "576px",
+      "md": "768px",
+      "lg": "992px",
+      "xl": "1200px",
+      "xxl": "1400px"
+    },
+    "rules": {
+      "hero": {
+        "lg": "height: 100vh",
+        "md": "height: 80vh; title: 36px",
+        "sm": "height: 60vh; title: 28px; single-button"
+      },
+      "services": {
+        "lg": "4 columns",
+        "md": "2 columns",
+        "sm": "1 column"
+      },
+      "teamCarousel": {
+        "lg": "4 slides",
+        "md": "2 slides",
+        "sm": "1 slide"
+      },
+      "footer": {
+        "lg": "4 columns",
+        "md": "2 columns",
+        "sm": "1 column stacked"
+      },
+      "sectionPadding": {
+        "lg": "100px 0",
+        "md": "70px 0",
+        "sm": "50px 0"
+      }
+    }
+  },
+
+  "cursorAI_instructions": {
+    "description": "Step-by-step instructions for Cursor AI to scaffold this project.",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Initialize Next.js 14 project with App Router",
+        "command": "npx create-next-app@14 medilo --app --src-dir --eslint"
+      },
+      {
+        "step": 2,
+        "action": "Install dependencies",
+        "command": "npm install bootstrap@5 sass react-slick slick-carousel react-countup react-visibility-sensor wowjs @fortawesome/fontawesome-free"
+      },
+      {
+        "step": 3,
+        "action": "Set up SCSS structure",
+        "files": [
+          "src/styles/variables.scss — Extract all colors, fonts, spacing from this JSON",
+          "src/styles/mixins.scss — Responsive mixins, flex helpers",
+          "src/styles/globals.scss — Import bootstrap, variables, base styles",
+          "src/styles/components/ — One SCSS file per component",
+          "src/styles/sections/ — One SCSS file per homepage section",
+          "src/styles/pages/ — Page-specific overrides"
+        ]
+      },
+      {
+        "step": 4,
+        "action": "Create component library",
+        "components": [
+          "src/components/Header/ — TopBar.jsx, MainNav.jsx, MobileMenu.jsx",
+          "src/components/Footer/ — Footer.jsx, CopyrightBar.jsx",
+          "src/components/Hero/ — HeroSlider.jsx",
+          "src/components/Sections/ — AboutSection, ServicesSection, TeamSection, WhyChooseUs, Portfolio, VideoSection, Offerings, AppointmentForm, BlogSection",
+          "src/components/UI/ — Button.jsx, SectionTitle.jsx, ServiceCard.jsx, TeamCard.jsx, BlogCard.jsx, Counter.jsx, PageBanner.jsx",
+          "src/components/Common/ — BackToTop.jsx, Preloader.jsx, SideContact.jsx"
+        ]
+      },
+      {
+        "step": 5,
+        "action": "Create pages using App Router",
+        "pages": [
+          "src/app/page.jsx — Homepage (compose all sections)",
+          "src/app/about/page.jsx",
+          "src/app/services/page.jsx",
+          "src/app/services/[slug]/page.jsx",
+          "src/app/team/page.jsx",
+          "src/app/team/[slug]/page.jsx",
+          "src/app/projects/page.jsx",
+          "src/app/timetable/page.jsx",
+          "src/app/appointments/page.jsx",
+          "src/app/blog/page.jsx",
+          "src/app/blog/[slug]/page.jsx",
+          "src/app/contact/page.jsx",
+          "src/app/not-found.jsx"
+        ]
+      },
+      {
+        "step": 6,
+        "action": "Add data layer",
+        "files": [
+          "src/data/services.json — All service data",
+          "src/data/team.json — Doctor profiles",
+          "src/data/blog.json — Blog posts",
+          "src/data/navigation.json — Menu structure",
+          "src/data/siteConfig.json — Global site settings (name, phone, email, socials)"
+        ]
+      },
+      {
+        "step": 7,
+        "action": "Apply animations",
+        "instructions": "Initialize WOW.js in layout.jsx useEffect. Add wow fadeInUp/fadeInLeft/etc. classes to elements per the animations spec above."
+      }
+    ],
+    "sassVariablesExample": "// _variables.scss\n$primary: #0A2540;\n$secondary: #00C0E8;\n$tertiary: #E8F6FC;\n$accent-green: #28A745;\n$body-text: #666666;\n$heading-color: #0A2540;\n$white: #FFFFFF;\n$off-white: #F7F9FC;\n$light-gray: #F0F0F0;\n$medium-gray: #8C8C8C;\n\n$font-primary: 'Poppins', sans-serif;\n$font-secondary: 'Rubik', sans-serif;\n\n$section-padding: 100px 0;\n$section-padding-mobile: 60px 0;\n$container-max: 1320px;\n$border-radius: 12px;\n$border-radius-pill: 50px;\n\n$card-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);\n$card-hover-shadow: 0 20px 60px rgba(0, 192, 232, 0.15);\n$nav-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);\n$btn-shadow: 0 8px 25px rgba(0, 192, 232, 0.3);\n\n$transition-default: all 0.4s ease;"
+  }
+}
+```
+
+---
+
+## Quick Reference Summary
+
+| Aspect | Value |
+|---|---|
+| **Primary Color** | `#0A2540` (Navy) |
+| **Secondary Color** | `#00C0E8` (Teal/Cyan) |
+| **Alt Background** | `#F7F9FC` (Off-white) |
+| **Heading Font** | Poppins (600-700) |
+| **Body Font** | Rubik (400-500) |
+| **Button Radius** | `50px` (Pill shape) |
+| **Card Radius** | `12px` |
+| **Section Spacing** | `100px` top/bottom |
+| **Grid** | Bootstrap 5, 1320px max |
+| **Animations** | WOW.js + CSS3 |
+| **Total Pages** | 15+ unique pages |
+| **Home Variants** | 3 |
+| **Header Variants** | 3 |
+| **Footer Variants** | 2-3 |
+
+---
+
+## How to Use in Cursor AI
+
+1. **Save** the JSON as `.cursor/design-system.json` or `docs/design-guideline.json` in your project root
+2. **Reference it** in Cursor by saying:
+   > *"Read the design guideline JSON at `docs/design-guideline.json` and create the [component name] following the exact color palette, typography, spacing, and animation specs."*
+3. **For individual components**, paste the relevant section (e.g., the `header` or `services` object) and ask Cursor to generate the JSX + SCSS
+4. **For SASS variables**, copy the `sassVariablesExample` string directly into your `_variables.scss` file as your starting point
