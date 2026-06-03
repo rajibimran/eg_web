@@ -176,8 +176,9 @@ const BookAppointment = () => {
     if (!phoneDigits) newErrors.phone = "Phone number is required";
     else if (phoneDigits.length < 10) newErrors.phone = "Enter a valid phone number";
 
-    if (!trimmedEmail) newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) newErrors.email = "Enter a valid email";
+    if (trimmedEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+      newErrors.email = "Enter a valid email";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -216,7 +217,7 @@ const BookAppointment = () => {
       const svc = bookingServices.find((s) => s.id === selectedService);
       const result = await api.bookingRequests.submit({
         patientName: name.trim(),
-        email: email.trim(),
+        ...(email.trim() ? { email: email.trim() } : {}),
         phone: phone.replace(/\D/g, ""),
         serviceId: selectedService,
         serviceTitle: svc?.title,
@@ -272,7 +273,7 @@ const BookAppointment = () => {
                 </p>
               </div>
               <p className="mt-[16px] font-body text-xs text-muted-foreground">
-                A confirmation SMS and email will be sent to your registered contact details.
+                Our team will contact you to confirm your appointment.
               </p>
               <Button
                 onClick={() => { setStep(1); setSelectedService(""); setSelectedDate(undefined); setSelectedTime(""); setName(""); setPhone(""); setEmail(""); setIsSuccess(false); }}
@@ -293,7 +294,10 @@ const BookAppointment = () => {
         layers={hero?.seo ? [hero.seo] : []}
         fallbackTitle={formatPageTitle(hero?.title?.trim() || "Book Appointment", siteName)}
         fallbackDescription={hero?.subtitle ?? "Schedule your medical examination in three simple steps."}
+        fallbackOgImage={hero?.slides?.[0]?.src}
+        fallbackOgImageAlt={hero?.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: hero?.title?.trim() || "Book Appointment" }}
       />
       {!ready || !hero || !pageConfig ? (
         <section className="relative min-h-[420px] animate-pulse bg-muted" aria-busy="true" aria-label="Loading booking page" />
@@ -430,7 +434,7 @@ const BookAppointment = () => {
                     {errors.phone && <p className="mt-[4px] font-body text-xs text-destructive">{errors.phone}</p>}
                   </div>
                   <div>
-                    <Label htmlFor="email" className="font-heading text-sm font-semibold text-foreground mb-[4px] block">Email Address *</Label>
+                    <Label htmlFor="email" className="font-heading text-sm font-semibold text-foreground mb-[4px] block">Email Address (optional)</Label>
                     <Input id="email" type="email" value={email} onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }} placeholder="your@email.com" className={cn("h-[44px] font-body text-sm", errors.email && "border-destructive")} maxLength={255} />
                     {errors.email && <p className="mt-[4px] font-body text-xs text-destructive">{errors.email}</p>}
                   </div>

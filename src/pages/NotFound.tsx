@@ -19,7 +19,7 @@ const NotFound = () => {
         useSiteDefault={false}
         layers={[]}
         fallbackTitle={formatPageTitle("404 — Page not found", siteName)}
-        fallbackDescription="The page you requested does not exist."
+        fallbackDescription={`The page you requested does not exist. Return to ${siteName} home.`}
         pathForCanonical={location.pathname}
         forceNoIndex
       />

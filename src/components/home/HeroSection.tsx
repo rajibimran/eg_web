@@ -139,10 +139,13 @@ const HeroSection = () => {
           layers={[]}
           fallbackTitle={siteName ? `${siteName} — ${homePart}` : formatPageTitle(homePart, siteName)}
           fallbackDescription={defaultHomeHero.subtitle}
+          fallbackOgImage={defaultHomeHero.slides[0]?.src}
+          fallbackOgImageAlt={defaultHomeHero.slides[0]?.alt}
           pathForCanonical="/"
+          autoJsonLd={{ kind: "home" }}
         />
         <section
-          className="relative min-h-[min(85vh,640px)] animate-pulse bg-muted sm:min-h-[min(88vh,720px)]"
+          className="relative min-h-[min(72vh,520px)] animate-pulse bg-muted sm:min-h-[min(76vh,580px)]"
           aria-busy="true"
           aria-label="Loading hero"
         />
@@ -150,17 +153,29 @@ const HeroSection = () => {
     );
   }
 
+  const curItem = mediaItems[current];
+  const heroOgSrc =
+    curItem && "kind" in curItem && curItem.kind !== "video" ? (curItem as HeroSlide).src : hero.slides[0]?.src;
+  const heroOgAlt =
+    curItem && "kind" in curItem && curItem.kind !== "video"
+      ? (curItem as HeroSlide).alt || (curItem as HeroSlide).title || hero.title
+      : hero.slides[0]?.alt || hero.title;
+
   return (
     <>
       <SeoHelmet
         layers={[hero.seo]}
         fallbackTitle={siteName ? `${siteName} — ${hero.title}` : formatPageTitle(hero.title, siteName)}
         fallbackDescription={hero.subtitle}
+        fallbackTextForDescription={[overlay.sub, siteConfig.tagline].filter(Boolean).join(" ").trim()}
+        fallbackOgImage={heroOgSrc}
+        fallbackOgImageAlt={heroOgAlt}
         pathForCanonical="/"
+        autoJsonLd={{ kind: "home" }}
       />
 
       <section
-        className="relative flex min-h-[min(85vh,640px)] items-center justify-center overflow-hidden sm:min-h-[min(88vh,720px)]"
+        className="relative flex min-h-[min(72vh,520px)] items-center justify-center overflow-hidden sm:min-h-[min(76vh,580px)] md:min-h-[min(85vh,640px)]"
         aria-roledescription="carousel"
         aria-label="Homepage hero"
       >
@@ -203,7 +218,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-primary/25" aria-hidden />
 
         <div
-          className={`container relative z-10 px-4 text-center sm:px-6 ${mediaItems.length > 1 ? "pb-24 pt-14 sm:pb-28 sm:pt-20" : "py-14 sm:py-20"}`}
+          className={`container relative z-10 px-4 text-center sm:px-6 ${mediaItems.length > 1 ? "pb-20 pt-10 sm:pb-28 sm:pt-20" : "py-10 sm:py-20"}`}
         >
           <h1 className="font-heading text-[clamp(1.5rem,4.5vw+0.6rem,3.75rem)] font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:text-6xl break-words">
             {overlay.headline}
@@ -260,7 +275,7 @@ const HeroSection = () => {
               <ChevronRight className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.5} />
             </button>
             <div
-              className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2 gap-2 pb-1 sm:bottom-8"
+              className="absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-1/2 z-20 mb-2 flex -translate-x-1/2 gap-2 pb-1 sm:bottom-8 lg:mb-0"
               role="tablist"
               aria-label="Hero slides"
             >

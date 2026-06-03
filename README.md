@@ -1,6 +1,6 @@
 # eg_web — Brand B SPA (separate frontend)
 
-This folder is a **copy of** `../frontend` with a **reduced route set** and **neutral shell defaults**. It uses the **same Strapi REST API** as the uniweb stack (see `universal_strapi_guide.md` and `docs/FRONTEND_STRAPI_MAINTENANCE_MAP.md` in this folder — some rows describe routes **not mounted** in this app).
+This folder is a **copy of** `../um_web` with a **reduced route set** and **neutral shell defaults**. It uses the **same Strapi REST API** as the uniweb stack (see `universal_strapi_guide.md` and `docs/FRONTEND_STRAPI_MAINTENANCE_MAP.md` in this folder — some rows describe routes **not mounted** in this app).
 
 ## Intended deployment
 
@@ -59,4 +59,4 @@ Replace theme tokens (`src/index.css`), typography, and components incrementally
 ## Related
 
 - Backend twin: **`../eg_admin`**
-- Upstream reference implementation: **`../frontend`** + **`../backend`** (do not modify those for brand B work).
+- Upstream reference implementation: **`../um_web`** + **`../um_admin`** (Unicare Medical — do not modify those for brand B work).

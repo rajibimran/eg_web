@@ -192,7 +192,10 @@ const Services = () => {
           layers={hero?.seo ? [hero.seo] : []}
           fallbackTitle={formatPageTitle("Our Services", siteName)}
           fallbackDescription={hero?.subtitle ?? defaultServicesHero.subtitle}
+          fallbackOgImage={hero?.slides?.[0]?.src}
+          fallbackOgImageAlt={hero?.slides?.[0]?.alt}
           pathForCanonical={pathname}
+          autoJsonLd={{ kind: "webpage", pageName: "Our Services" }}
         />
         <section
           className="relative flex min-h-[400px] items-center justify-center bg-muted"
@@ -233,7 +236,10 @@ const Services = () => {
         layers={[hero.seo]}
         fallbackTitle={formatPageTitle(hero.title || "Our Services", siteName)}
         fallbackDescription={hero.subtitle}
+        fallbackOgImage={hero.slides?.[0]?.src}
+        fallbackOgImageAlt={hero.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: hero.title || "Our Services" }}
       />
       <PageHeroSlider
         images={hero.slides}
@@ -266,7 +272,7 @@ const Services = () => {
           </header>
 
           <div
-            className="-mx-4 mb-8 flex gap-2 overflow-x-auto px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+            className="-mx-4 mb-8 flex snap-x snap-mandatory gap-1.5 overflow-x-auto px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [-webkit-overflow-scrolling:touch] sm:mx-0 sm:flex-wrap sm:justify-center sm:gap-2 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
             role="tablist"
             aria-label="Filter by service category"
           >
@@ -280,7 +286,7 @@ const Services = () => {
                   aria-selected={active}
                   onClick={() => setActiveCategory(cat)}
                   className={cn(
-                    "shrink-0 rounded-full border-2 px-5 py-2.5 font-heading text-sm font-semibold transition-all duration-200",
+                    "shrink-0 snap-start rounded-full border-2 px-3 py-1.5 font-heading text-xs font-semibold transition-all duration-200 sm:px-5 sm:py-2.5 sm:text-sm",
                     active
                       ? "border-secondary bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_rgba(10,37,64,0.35)]"
                       : "border-border/80 bg-card text-primary hover:border-secondary/45 hover:bg-muted/40",

@@ -138,20 +138,19 @@ const Header = () => {
         className="sticky top-0 z-50 w-full isolate bg-white [backface-visibility:hidden]"
         role="banner"
       >
-        <div className="bg-primary text-primary-foreground">
-          <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-3 py-2 sm:px-5 lg:h-10 lg:flex-row lg:items-center lg:justify-between lg:py-1.5">
-            <div className="flex w-full items-center justify-between gap-2 lg:w-auto lg:flex-1 lg:justify-start">
-              <div className="flex min-w-0 flex-1 gap-0.5 overflow-hidden lg:flex-none lg:overflow-visible">
+        <div className="hidden bg-primary text-primary-foreground lg:block">
+          <div className="mx-auto flex max-w-[1400px] flex-row items-center justify-between gap-4 px-5 py-1.5 lg:h-10">
+            <div className="flex min-w-0 flex-1 items-center justify-start gap-3">
+              <div className="flex min-w-0 gap-0.5 overflow-hidden lg:flex-none lg:overflow-visible">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="h-7 w-7 shrink-0 animate-pulse rounded-[3px] bg-white/15" />
                 ))}
               </div>
-              <div className="h-7 w-16 shrink-0 animate-pulse rounded-[3px] bg-white/25 lg:hidden" />
             </div>
-            <div className="flex flex-col items-center gap-2 border-t border-white/15 pt-2 sm:gap-2.5 lg:w-auto lg:flex-row lg:flex-nowrap lg:justify-end lg:gap-3 lg:border-t-0 lg:pt-0">
-              <div className="h-3 w-28 animate-pulse rounded bg-white/20 lg:w-24" />
-              <div className="h-3 w-36 animate-pulse rounded bg-white/20 lg:w-32" />
-              <div className="hidden h-7 w-28 animate-pulse rounded-[3px] bg-white/25 lg:block" />
+            <div className="flex flex-row flex-nowrap items-center justify-end gap-3">
+              <div className="h-3 w-28 animate-pulse rounded bg-white/20" />
+              <div className="h-3 w-32 animate-pulse rounded bg-white/20" />
+              <div className="h-7 w-28 animate-pulse rounded-[3px] bg-white/25" />
             </div>
           </div>
         </div>
@@ -172,8 +171,8 @@ const Header = () => {
               ))}
             </div>
           </div>
-          <div className="flex h-16 items-center justify-between px-4 sm:px-8 lg:hidden">
-            <div className="h-10 w-10 animate-pulse rounded-full bg-muted" />
+          <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-3 sm:px-6 lg:hidden">
+            <div className="h-9 w-9 animate-pulse rounded-full bg-muted sm:h-10 sm:w-10" />
             <div className="h-10 w-10 animate-pulse rounded-md bg-muted" />
           </div>
         </div>
@@ -186,10 +185,9 @@ const Header = () => {
       className="sticky top-0 z-50 w-full isolate bg-white shadow-[0_1px_0_hsl(var(--primary)/0.08)] [backface-visibility:hidden] supports-[backdrop-filter]:shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
       role="banner"
     >
-      <div className="bg-primary text-primary-foreground">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-3 py-2 sm:px-5 lg:h-10 lg:flex-row lg:items-center lg:justify-between lg:gap-4 lg:py-1.5">
-          {/* Below lg: row 1 = socials + compact Book; row 2 = phone + email (+ full Book only lg+). Avoids tablet cram in one row. */}
-          <div className="flex w-full min-w-0 items-center justify-between gap-2 lg:w-auto lg:flex-1 lg:justify-start lg:gap-3">
+      <div className="hidden bg-primary text-primary-foreground lg:block">
+        <div className="mx-auto flex max-w-[1400px] flex-row items-center justify-between gap-4 px-5 py-1.5 lg:h-10">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
             <div
               className={cn(
                 "flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto overscroll-x-contain pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-none lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden",
@@ -210,25 +208,17 @@ const Header = () => {
                   </a>
                 ))
               ) : (
-                <span className="line-clamp-2 font-gamcaNav text-[11px] font-medium leading-snug text-white sm:line-clamp-1 sm:text-[13px]">
+                <span className="line-clamp-1 font-gamcaNav text-[13px] font-medium leading-snug text-white">
                   {siteConfig.workingHours}
                 </span>
               )}
             </div>
-            <Link
-              to="/book"
-              className="font-gamcaNav shrink-0 whitespace-nowrap rounded-full border-2 border-secondary bg-secondary px-2.5 py-1 text-center text-[10px] font-bold uppercase tracking-wide text-secondary-foreground transition-all duration-300 hover:bg-transparent hover:text-white lg:hidden"
-              style={{ letterSpacing: "0.4px" }}
-            >
-              Book
-            </Link>
           </div>
 
-          {/* Phone + email: stacked / centered below lg; single row with CTA from lg */}
-          <div className="flex w-full min-w-0 flex-col items-center gap-2 border-t border-white/15 pt-2 sm:gap-2.5 lg:w-auto lg:flex-row lg:flex-nowrap lg:items-center lg:justify-end lg:gap-4 lg:border-t-0 lg:pt-0">
+          <div className="flex min-w-0 flex-row flex-nowrap items-center justify-end gap-4">
             <a
               href={telHref}
-              className="font-gamcaNav flex w-full max-w-md items-center justify-center gap-1.5 text-center text-[12px] font-medium text-white transition-opacity hover:opacity-90 sm:w-auto sm:max-w-none sm:text-[13px] lg:justify-start lg:text-left"
+              className="font-gamcaNav flex items-center gap-1.5 text-[13px] font-medium text-white transition-opacity hover:opacity-90"
               style={{ letterSpacing: "0.3px" }}
             >
               <Phone className="h-3.5 w-3.5 shrink-0 text-secondary" aria-hidden />
@@ -237,15 +227,15 @@ const Header = () => {
             {mailHref ? (
               <a
                 href={mailHref}
-                className="font-gamcaNav flex w-full max-w-md items-center justify-center gap-1.5 text-center text-[12px] font-normal text-white transition-opacity hover:opacity-90 sm:w-auto sm:max-w-none sm:text-[13px] lg:max-w-[min(280px,32vw)] lg:justify-start lg:text-left xl:max-w-[340px]"
+                className="font-gamcaNav flex max-w-[min(280px,32vw)] items-center gap-1.5 text-[13px] font-normal text-white transition-opacity hover:opacity-90 xl:max-w-[340px]"
               >
                 <Mail className="h-3.5 w-3.5 shrink-0 text-white" aria-hidden />
-                <span className="min-w-0 break-all sm:break-normal lg:truncate">{siteConfig.email}</span>
+                <span className="min-w-0 truncate">{siteConfig.email}</span>
               </a>
             ) : null}
             <Link
               to="/book"
-              className="font-gamcaNav hidden shrink-0 whitespace-nowrap rounded-full border-2 border-secondary bg-secondary px-3 py-1.5 text-center text-[10px] font-bold uppercase tracking-wide text-secondary-foreground transition-all duration-300 hover:bg-transparent hover:text-white lg:inline-flex lg:px-[18px] lg:text-xs"
+              className="font-gamcaNav inline-flex shrink-0 whitespace-nowrap rounded-full border-2 border-secondary bg-secondary px-[18px] py-1.5 text-center text-xs font-bold uppercase tracking-wide text-secondary-foreground transition-all duration-300 hover:bg-transparent hover:text-white"
               style={{ letterSpacing: "0.5px" }}
             >
               Book appointment
@@ -259,7 +249,7 @@ const Header = () => {
         style={{ WebkitBackdropFilter: "blur(12px)", backdropFilter: "blur(12px)" }}
       >
         {/* Mobile / tablet: logo left, hamburger right */}
-        <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:h-20 sm:px-8 lg:hidden">
+        <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-3 sm:px-6 lg:hidden">
           <Link
             to="/"
             className="flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.03]"
@@ -268,9 +258,9 @@ const Header = () => {
             <img
               src={siteConfig.logo}
               alt={`${siteConfig.siteName} logo`}
-              className="h-11 max-h-14 w-auto max-w-14 object-contain sm:h-14 sm:max-h-16 sm:max-w-16"
-              width={56}
-              height={56}
+              className="h-9 w-auto max-w-12 object-contain sm:h-10 sm:max-w-14"
+              width={40}
+              height={40}
             />
           </Link>
           <Sheet open={open} onOpenChange={setOpen}>
@@ -278,10 +268,10 @@ const Header = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-11 w-11 text-primary hover:bg-primary/10"
+                className="h-10 w-10 text-primary hover:bg-primary/10"
                 aria-label="Open menu"
               >
-                <Menu className="h-7 w-7" strokeWidth={2} />
+                <Menu className="h-6 w-6" strokeWidth={2} />
               </Button>
             </SheetTrigger>
             <SheetContent
@@ -292,17 +282,6 @@ const Header = () => {
                 <SheetTitle className="text-left font-gamcaLogo text-lg font-bold text-white">
                   Menu
                 </SheetTitle>
-                <Link
-                  to="/"
-                  onClick={() => setOpen(false)}
-                  className="mt-4 flex items-center gap-2"
-                >
-                  <img
-                    src={siteConfig.logo}
-                    alt={`${siteConfig.siteName} logo`}
-                    className="h-10 w-auto object-contain brightness-0 invert"
-                  />
-                </Link>
               </div>
               <nav className="flex flex-col gap-1 px-4 py-4 font-gamcaNav" aria-label="Main navigation">
                 {flatItems.map((item) => (
@@ -334,8 +313,36 @@ const Header = () => {
                   </span>
                 </Link>
               </nav>
+              <div className="mt-auto border-t border-white/10 px-6 py-5">
+                <p className="mb-3 font-gamcaNav text-xs font-semibold uppercase tracking-wider text-white/70">
+                  Contact
+                </p>
+                <div className="space-y-3">
+                  <a
+                    href={telHref}
+                    onClick={() => setOpen(false)}
+                    className="font-gamcaNav flex items-center gap-2.5 text-sm font-medium text-white transition-colors hover:text-secondary"
+                  >
+                    <Phone className="h-4 w-4 shrink-0 text-secondary" aria-hidden />
+                    <span className="min-w-0 break-words">{siteConfig.phone}</span>
+                  </a>
+                  {mailHref ? (
+                    <a
+                      href={mailHref}
+                      onClick={() => setOpen(false)}
+                      className="font-gamcaNav flex items-center gap-2.5 text-sm font-normal text-white transition-colors hover:text-secondary"
+                    >
+                      <Mail className="h-4 w-4 shrink-0 text-white/90" aria-hidden />
+                      <span className="min-w-0 break-all">{siteConfig.email}</span>
+                    </a>
+                  ) : null}
+                  {socialEntries.length === 0 && siteConfig.workingHours ? (
+                    <p className="font-gamcaNav text-xs leading-snug text-white/75">{siteConfig.workingHours}</p>
+                  ) : null}
+                </div>
+              </div>
               {socialEntries.length > 0 ? (
-                <div className="mt-auto border-t border-white/10 px-6 py-5">
+                <div className="border-t border-white/10 px-6 py-5">
                   <p className="mb-2 font-gamcaNav text-xs font-semibold uppercase tracking-wider text-white/70">
                     Follow us
                   </p>

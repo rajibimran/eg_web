@@ -113,7 +113,10 @@ const ScreeningProcess = () => {
           siteConfig.defaultSeo?.metaDescription ??
           "Step-by-step guide to the medical screening process."
         }
+        fallbackOgImage={hero?.slides?.[0]?.src}
+        fallbackOgImageAlt={hero?.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: hero?.title?.trim() || "Screening Process" }}
       />
       {!ready ? (
         <section className="relative min-h-[400px] animate-pulse bg-muted" aria-busy="true" aria-label="Loading process page" />

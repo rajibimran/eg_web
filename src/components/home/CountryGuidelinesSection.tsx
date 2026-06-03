@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { RichText } from "@/components/content/RichText";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { api, IS_STRAPI_CONFIGURED, USE_LOCAL_MOCK_HYDRATION, type CountryGuideline } from "@/lib/api";
+import { cn } from "@/lib/utils";
 import {
   FileText,
   AlertCircle,
@@ -19,8 +20,9 @@ const LOCAL_GUIDELINES_FALLBACK: CountryGuideline[] = [
     id: "ksa",
     name: "Saudi Arabia",
     flag: "https://flagcdn.com/w80/sa.png",
-    processingTime: "2 to 4 working days",
-    approvalNote: "100% WAFID Approved",
+    details: "Results typically upload in 2 to 4 working days (WAFID / GAMCA).",
+    marketingPoint1: "Medical report validity per embassy rules",
+    marketingPoint2: "100% WAFID Approved",
     expertTip:
       "Book your KSA medical appointment at least 2 weeks before your intended travel date. Early morning slots (9 AM) are best to avoid long waiting times.",
     mandatoryTests:
@@ -36,8 +38,9 @@ const LOCAL_GUIDELINES_FALLBACK: CountryGuideline[] = [
     id: "uae",
     name: "United Arab Emirates",
     flag: "https://flagcdn.com/w80/ae.png",
-    processingTime: "2 to 3 working days",
-    approvalNote: "100% WAFID Approved",
+    details: "Results typically upload in 2 to 3 working days (WAFID / GAMCA).",
+    marketingPoint1: "Medical report validity per embassy rules",
+    marketingPoint2: "100% WAFID Approved",
     expertTip:
       "UAE has separate health authorities for each emirate — DHA for Dubai, HAAD for Abu Dhabi. Ensure your medical center is authorized for your specific emirate destination.",
     mandatoryTests:
@@ -53,8 +56,9 @@ const LOCAL_GUIDELINES_FALLBACK: CountryGuideline[] = [
     id: "qatar",
     name: "Qatar",
     flag: "https://flagcdn.com/w80/qa.png",
-    processingTime: "3 to 5 working days",
-    approvalNote: "100% WAFID Approved",
+    details: "Results typically upload in 3 to 5 working days (WAFID / GAMCA).",
+    marketingPoint1: "Medical report validity per embassy rules",
+    marketingPoint2: "100% WAFID Approved",
     expertTip:
       "Qatar's medical requirements have become more stringent since FIFA 2022 infrastructure projects. Book early and ensure all vaccinations are up to date before your appointment.",
     mandatoryTests:
@@ -70,8 +74,9 @@ const LOCAL_GUIDELINES_FALLBACK: CountryGuideline[] = [
     id: "kuwait",
     name: "Kuwait",
     flag: "https://flagcdn.com/w80/kw.png",
-    processingTime: "3 to 5 working days",
-    approvalNote: "100% WAFID Approved",
+    details: "Results typically upload in 3 to 5 working days (WAFID / GAMCA).",
+    marketingPoint1: "Medical report validity per embassy rules",
+    marketingPoint2: "100% WAFID Approved",
     expertTip:
       "Kuwait has strict age-related criteria for certain job categories. Verify your eligibility before booking to avoid unnecessary costs and delays.",
     mandatoryTests:
@@ -87,8 +92,9 @@ const LOCAL_GUIDELINES_FALLBACK: CountryGuideline[] = [
     id: "bahrain",
     name: "Bahrain",
     flag: "https://flagcdn.com/w80/bh.png",
-    processingTime: "2 to 3 working days",
-    approvalNote: "100% WAFID Approved",
+    details: "Results typically upload in 2 to 3 working days (WAFID / GAMCA).",
+    marketingPoint1: "Medical report validity per embassy rules",
+    marketingPoint2: "100% WAFID Approved",
     expertTip:
       "Bahrain's process is one of the most streamlined in the GCC. Results are typically available faster than other countries. Morning appointments generally have shorter wait times.",
     mandatoryTests:
@@ -104,8 +110,9 @@ const LOCAL_GUIDELINES_FALLBACK: CountryGuideline[] = [
     id: "oman",
     name: "Oman",
     flag: "https://flagcdn.com/w80/om.png",
-    processingTime: "3 to 5 working days",
-    approvalNote: "100% WAFID Approved",
+    details: "Results typically upload in 3 to 5 working days (WAFID / GAMCA).",
+    marketingPoint1: "Medical report validity per embassy rules",
+    marketingPoint2: "100% WAFID Approved",
     expertTip:
       "Oman requires all medical certificates to be attested by the Omani Embassy. Start the process early as attestation may add 2-3 extra days to your timeline.",
     mandatoryTests:
@@ -231,9 +238,6 @@ const CountryGuidelinesSection = () => {
                   <img src={country.flag} alt="" className="h-5 w-8 shrink-0 rounded-sm object-cover ring-1 ring-border/80 sm:h-6 sm:w-9" />
                   <span className="flex min-w-0 flex-col items-start gap-0 text-left sm:flex-row sm:items-baseline sm:gap-2">
                     <span className="break-words">{country.name}</span>
-                    <span className="font-body text-[11px] font-normal text-muted-foreground sm:text-xs">
-                      {country.processingTime}
-                    </span>
                   </span>
                 </span>
               </AccordionTrigger>
@@ -241,20 +245,28 @@ const CountryGuidelinesSection = () => {
                 <div className="grid gap-4 border-t border-border/60 pt-4 sm:grid-cols-3 sm:gap-5 sm:pt-4">
                   <div className="space-y-3 sm:col-span-1">
                     <div className="rounded-xl border border-border/70 bg-muted/20 p-3 sm:p-4">
-                      <p className="font-body text-[13px] leading-snug text-muted-foreground">
-                        Results typically upload in{" "}
-                        <span className="font-semibold text-foreground">{country.processingTime}</span> (WAFID / GAMCA).
-                      </p>
-                      <ul className="mt-3 space-y-1.5 text-[13px] text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <Calendar className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                          <span>Medical report validity per embassy rules</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
-                          <span>{country.approvalNote}</span>
-                        </li>
-                      </ul>
+                      {country.details ? (
+                        <RichText
+                          value={country.details}
+                          className="font-body text-[13px] leading-snug text-muted-foreground [&_p]:text-[13px] [&_p]:leading-snug [&_p]:text-muted-foreground"
+                        />
+                      ) : null}
+                      {country.marketingPoint1 || country.marketingPoint2 ? (
+                        <ul className={cn("space-y-1.5 text-[13px] text-muted-foreground", country.details && "mt-3")}>
+                          {country.marketingPoint1 ? (
+                            <li className="flex items-start gap-2">
+                              <Calendar className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                              <span>{country.marketingPoint1}</span>
+                            </li>
+                          ) : null}
+                          {country.marketingPoint2 ? (
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" />
+                              <span>{country.marketingPoint2}</span>
+                            </li>
+                          ) : null}
+                        </ul>
+                      ) : null}
                       <Link to="/book" className="mt-3 block">
                         <Button className="h-9 w-full rounded-full bg-secondary font-heading text-xs font-semibold text-secondary-foreground shadow-sm hover:brightness-110 sm:h-10 sm:text-sm">
                           Book — {country.name}

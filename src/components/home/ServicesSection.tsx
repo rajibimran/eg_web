@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { ChevronRight, FileText, Stethoscope } from "lucide-react";
 import { RichText } from "@/components/content/RichText";
 import { ServiceMark } from "@/components/service/ServiceMark";
-import { api, IS_STRAPI_CONFIGURED, USE_LOCAL_MOCK_HYDRATION } from "@/lib/api";
+import { api, defaultSiteConfig, IS_STRAPI_CONFIGURED, USE_LOCAL_MOCK_HYDRATION } from "@/lib/api";
 import { services as defaultServices, type ServiceCard } from "@/data/mockData";
+import { useStrapiLayout } from "@/contexts/StrapiLayoutContext";
 import { cn } from "@/lib/utils";
 
 function ServiceSlideCard({ service, index }: { service: ServiceCard; index: number }) {
@@ -77,6 +78,15 @@ function ServiceSlideCard({ service, index }: { service: ServiceCard; index: num
 }
 
 const ServicesSection = () => {
+  const { siteConfig } = useStrapiLayout();
+  const sectionEyebrow =
+    siteConfig.homeServicesEyebrow?.trim() || defaultSiteConfig.homeServicesEyebrow || "";
+  const sectionHeading =
+    siteConfig.homeServicesHeading?.trim() || defaultSiteConfig.homeServicesHeading || "";
+  const sectionSubheading =
+    siteConfig.homeServicesSubheading?.trim() || defaultSiteConfig.homeServicesSubheading || "";
+  const showSectionHeader = Boolean(sectionEyebrow || sectionHeading || sectionSubheading);
+
   const [items, setItems] = useState<ServiceCard[] | null>(() =>
     USE_LOCAL_MOCK_HYDRATION ? defaultServices : IS_STRAPI_CONFIGURED ? null : [],
   );
@@ -184,21 +194,37 @@ const ServicesSection = () => {
   return (
     <section className="relative border-t border-border/80 bg-background py-10 sm:py-14" aria-labelledby="clinical-services-heading">
       <div className="container px-4 sm:px-6">
-        <header className="mx-auto mb-8 max-w-3xl text-center sm:mb-10">
-          <div className="mb-3 flex items-center justify-center gap-3 sm:mb-4">
-            <span className="h-px max-w-[72px] flex-1 bg-gradient-to-r from-transparent to-border sm:max-w-[100px]" aria-hidden />
-            <p className="shrink-0 font-body text-[10px] font-semibold uppercase tracking-[0.22em] text-secondary sm:text-[11px]">
-              Clinical services
-            </p>
-            <span className="h-px max-w-[72px] flex-1 bg-gradient-to-l from-transparent to-border sm:max-w-[100px]" aria-hidden />
-          </div>
-          <h2 id="clinical-services-heading" className="font-heading text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
-            Imaging, labs &amp; visa medicals
+        {showSectionHeader ? (
+          <header className="mx-auto mb-8 max-w-3xl text-center sm:mb-10">
+            {sectionEyebrow ? (
+              <div className="mb-3 flex items-center justify-center gap-3 sm:mb-4">
+                <span className="h-px max-w-[72px] flex-1 bg-gradient-to-r from-transparent to-border sm:max-w-[100px]" aria-hidden />
+                <p className="shrink-0 font-body text-[10px] font-semibold uppercase tracking-[0.22em] text-secondary sm:text-[11px]">
+                  {sectionEyebrow}
+                </p>
+                <span className="h-px max-w-[72px] flex-1 bg-gradient-to-l from-transparent to-border sm:max-w-[100px]" aria-hidden />
+              </div>
+            ) : null}
+            {sectionHeading ? (
+              <h2 id="clinical-services-heading" className="font-heading text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
+                {sectionHeading}
+              </h2>
+            ) : (
+              <h2 id="clinical-services-heading" className="sr-only">
+                Clinical services
+              </h2>
+            )}
+            {sectionSubheading ? (
+              <p className="mx-auto mt-2 max-w-lg font-body text-sm leading-snug text-muted-foreground sm:text-[15px]">
+                {sectionSubheading}
+              </p>
+            ) : null}
+          </header>
+        ) : (
+          <h2 id="clinical-services-heading" className="sr-only">
+            Clinical services
           </h2>
-          <p className="mx-auto mt-2 max-w-lg font-body text-sm leading-snug text-muted-foreground sm:text-[15px]">
-            End-to-end pathways — specimen handling, imaging, review, and documentation for overseas clearance.
-          </p>
-        </header>
+        )}
 
         <div
           ref={scrollerRef}

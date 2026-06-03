@@ -71,22 +71,24 @@ const RegionHighlightsSection = () => {
             <h2 className="font-heading text-xl font-semibold tracking-tight text-white sm:text-2xl lg:text-4xl">
               {banner.bannerTitle}
             </h2>
-            <p className="mt-1 max-w-xl font-body text-xs text-white/90 sm:mt-[8px] sm:text-sm lg:text-base">
+            <p className="mt-1 line-clamp-2 max-w-xl font-body text-xs text-white/90 sm:mt-[8px] sm:line-clamp-none sm:text-sm lg:text-base">
               {banner.bannerDescription}
             </p>
-            <div className="mt-3 flex flex-wrap gap-2 sm:mt-[16px] sm:gap-[12px]">
+            <div className="-mx-4 mt-2 flex snap-x snap-mandatory gap-1 overflow-x-auto px-4 pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [-webkit-overflow-scrolling:touch] sm:mx-0 sm:mt-[16px] sm:flex-wrap sm:gap-[12px] sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
               {countries.map((country) => (
                 <div
                   key={country.name}
-                  className="group/flag flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-1 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/40 sm:gap-[6px] sm:px-[12px] sm:py-[6px]"
+                  className="group/flag flex shrink-0 snap-start items-center gap-1 rounded-full bg-white/20 px-2 py-0.5 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/40 sm:gap-[6px] sm:px-[12px] sm:py-[6px]"
                 >
                   <img
                     src={country.flag}
                     alt={`${country.name} flag`}
-                    className="h-4 w-5 rounded-sm object-cover sm:h-[20px] sm:w-[28px]"
+                    className="h-3.5 w-4 rounded-sm object-cover sm:h-[20px] sm:w-[28px]"
                     loading="lazy"
                   />
-                  <span className="font-heading text-[10px] font-semibold text-white sm:text-xs">{country.name}</span>
+                  <span className="whitespace-nowrap font-heading text-[9px] font-semibold text-white sm:text-xs">
+                    {country.name}
+                  </span>
                 </div>
               ))}
             </div>

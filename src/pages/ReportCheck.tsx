@@ -196,7 +196,10 @@ const ReportCheck = () => {
         layers={hero?.seo ? [hero.seo] : []}
         fallbackTitle={formatPageTitle(hero?.title?.trim() || "Check Report", siteName)}
         fallbackDescription={hero?.subtitle ?? "Enter your Patient ID and registered phone number to access your medical report."}
+        fallbackOgImage={hero?.slides?.[0]?.src}
+        fallbackOgImageAlt={hero?.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: hero?.title?.trim() || "Check Report" }}
       />
       {loading ? (
         <>

@@ -150,7 +150,10 @@ const Blog = () => {
           layers={hero?.seo ? [hero.seo] : []}
           fallbackTitle={formatPageTitle("Health Resources & Blog", siteName)}
           fallbackDescription={hero?.subtitle ?? defaultBlogHero.subtitle}
+          fallbackOgImage={hero?.slides?.[0]?.src}
+          fallbackOgImageAlt={hero?.slides?.[0]?.alt}
           pathForCanonical={pathname}
+          autoJsonLd={{ kind: "webpage", pageName: "Health Resources & Blog" }}
         />
         <section className="relative min-h-[320px] animate-pulse bg-gradient-to-br from-secondary/5 to-muted/80" aria-busy="true" aria-label="Loading blog" />
         <PageBreadcrumb items={[{ label: "Blog" }]} />
@@ -170,7 +173,10 @@ const Blog = () => {
           layers={[hero.seo]}
           fallbackTitle={formatPageTitle(hero.title || "Blog", siteName)}
           fallbackDescription={hero.subtitle}
+          fallbackOgImage={hero.slides?.[0]?.src}
+          fallbackOgImageAlt={hero.slides?.[0]?.alt}
           pathForCanonical={pathname}
+          autoJsonLd={{ kind: "webpage", pageName: hero.title || "Blog" }}
         />
         <PageHeroSlider images={hero.slides} fallbackCtaButtons={hero.ctaButtons} title={hero.title} subtitle={hero.subtitle} />
         <PageBreadcrumb items={[{ label: "Blog" }]} />
@@ -190,7 +196,10 @@ const Blog = () => {
         layers={[hero.seo]}
         fallbackTitle={formatPageTitle(hero.title || "Health Resources & Blog", siteName)}
         fallbackDescription={hero.subtitle}
+        fallbackOgImage={hero.slides?.[0]?.src}
+        fallbackOgImageAlt={hero.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: hero.title || "Health Resources & Blog" }}
       />
       <PageHeroSlider images={hero.slides} fallbackCtaButtons={hero.ctaButtons} title={hero.title} subtitle={hero.subtitle} />
 

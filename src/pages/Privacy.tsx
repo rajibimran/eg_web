@@ -46,7 +46,10 @@ const Privacy = () => {
         layers={pageConfig?.seo ? [pageConfig.seo] : []}
         fallbackTitle={formatPageTitle(title, siteName)}
         fallbackDescription={fallbackDescription}
+        fallbackOgImage={siteConfig.logo}
+        fallbackOgImageAlt={`${siteName} logo`}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: title }}
       />
       <div className="bg-primary py-[48px]">
         <div className="container text-center">

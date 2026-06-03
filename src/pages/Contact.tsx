@@ -105,7 +105,10 @@ const Contact = () => {
           layers={hero?.seo ? [hero.seo] : []}
           fallbackTitle={formatPageTitle("Contact Us", siteName)}
           fallbackDescription={hero?.subtitle ?? defaultContactHero.subtitle}
+          fallbackOgImage={hero?.slides?.[0]?.src}
+          fallbackOgImageAlt={hero?.slides?.[0]?.alt}
           pathForCanonical={pathname}
+          autoJsonLd={{ kind: "webpage", pageName: "Contact Us" }}
         />
         <section className="relative h-48 animate-pulse bg-muted sm:h-56" aria-busy="true" aria-label="Loading contact page" />
         <PageBreadcrumb items={[{ label: "Contact Us" }]} />
@@ -133,7 +136,10 @@ const Contact = () => {
         layers={[hero!.seo]}
         fallbackTitle={formatPageTitle(hero!.title || "Contact Us", siteName)}
         fallbackDescription={hero!.subtitle}
+        fallbackOgImage={hero!.slides?.[0]?.src}
+        fallbackOgImageAlt={hero!.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: hero!.title || "Contact Us" }}
       />
       <PageHeroSlider
         images={hero!.slides}

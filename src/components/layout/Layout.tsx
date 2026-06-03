@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import WhatsAppFAB from "./WhatsAppFAB";
+import ChatbotScript from "./ChatbotScript";
 import BackToTop from "./BackToTop";
 import MobileStickyBar from "./MobileStickyBar";
 
@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
-      <WhatsAppFAB />
+      <ChatbotScript />
       <BackToTop />
       <MobileStickyBar />
     </div>

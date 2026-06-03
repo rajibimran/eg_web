@@ -82,6 +82,7 @@ const ServicePage = () => {
         <SeoHelmet
           layers={[]}
           fallbackTitle={formatPageTitle("Loading service", siteName)}
+          fallbackDescription={siteConfig.tagline}
           pathForCanonical={pathname}
         />
         <section className="relative min-h-[320px] animate-pulse bg-muted" aria-busy="true" aria-label="Loading service" />
@@ -130,7 +131,11 @@ const ServicePage = () => {
         layers={[service.seo]}
         fallbackTitle={formatPageTitle(service.title, siteName)}
         fallbackDescription={service.description.slice(0, 200)}
+        fallbackTextForDescription={service.description}
+        fallbackOgImage={service.heroImage}
+        fallbackOgImageAlt={service.title}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: service.title }}
       />
       <section className="relative flex min-h-[320px] items-center overflow-hidden">
         {service.heroImage ? (

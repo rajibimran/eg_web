@@ -32,3 +32,10 @@ dist-ssr
 
 # Cursor / editor scratch files
 Untitled
+
+############################
+# Docker
+############################
+
+docker-compose.yml
+Dockerfile

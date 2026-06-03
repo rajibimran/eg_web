@@ -75,7 +75,20 @@ const BlogPost = () => {
         layers={[post.seo]}
         fallbackTitle={formatPageTitle(post.title, siteName)}
         fallbackDescription={post.excerpt}
+        fallbackTextForDescription={post.content}
+        fallbackOgImage={post.image}
+        fallbackOgImageAlt={post.title}
         pathForCanonical={pathname}
+        ogType="article"
+        articlePublishedTime={post.date}
+        articleSection={post.category || undefined}
+        autoJsonLd={{
+          kind: "article",
+          articleType: "BlogPosting",
+          datePublished: post.date,
+          section: post.category || undefined,
+          authorName: post.author?.name,
+        }}
       />
 
       <div className="relative overflow-hidden bg-gradient-to-br from-muted/80 via-background to-secondary/5">

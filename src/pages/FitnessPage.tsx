@@ -121,7 +121,10 @@ const FitnessPage = () => {
           layers={[hero?.seo, fitnessPageConfig?.seo].filter((x): x is PageSeo => Boolean(x))}
           fallbackTitle={formatPageTitle("Fitness Criteria", siteName)}
           fallbackDescription={hero?.subtitle ?? defaultFitnessHero.subtitle}
+          fallbackOgImage={hero?.slides?.[0]?.src}
+          fallbackOgImageAlt={hero?.slides?.[0]?.alt}
           pathForCanonical={pathname}
+          autoJsonLd={{ kind: "webpage", pageName: "Fitness Criteria" }}
         />
         <section className="relative min-h-[400px] animate-pulse bg-gradient-to-br from-muted/80 to-background" aria-busy="true" aria-label="Loading fitness page" />
         <PageBreadcrumb items={[{ label: "Fitness Criteria" }]} />
@@ -146,7 +149,10 @@ const FitnessPage = () => {
         layers={[hero.seo, fitnessPageConfig.seo].filter((x): x is PageSeo => Boolean(x))}
         fallbackTitle={formatPageTitle(hero.title || "Fitness Criteria", siteName)}
         fallbackDescription={hero.subtitle}
+        fallbackOgImage={hero.slides?.[0]?.src}
+        fallbackOgImageAlt={hero.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: hero.title || "Fitness Criteria" }}
       />
       <PageHeroSlider
         images={hero.slides}

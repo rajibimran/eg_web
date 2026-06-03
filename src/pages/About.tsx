@@ -140,7 +140,11 @@ const About = () => {
         layers={ready && hero ? [hero.seo, content?.seo] : []}
         fallbackTitle={formatPageTitle("About Us", siteName)}
         fallbackDescription={aboutDesc}
+        fallbackTextForDescription={content?.missionText}
+        fallbackOgImage={hero?.slides?.[0]?.src}
+        fallbackOgImageAlt={hero?.slides?.[0]?.alt}
         pathForCanonical={pathname}
+        autoJsonLd={{ kind: "webpage", pageName: "About Us" }}
       />
       {!ready || !hero ? (
         <section
