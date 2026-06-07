@@ -1897,6 +1897,36 @@ export const labReportFilesApi = {
     }
   },
 
+  /** Public: lookup report PDF by passport number (reports/{PASSPORT}.pdf on server). */
+  reportByPassport: async (
+    passportNumber: string,
+  ): Promise<
+    | { ok: true; blob: Blob }
+    | { ok: false; notFound: true }
+    | { ok: false; error: string }
+  > => {
+    if (!STRAPI_BASE_URL) return { ok: false, error: "Strapi is not configured." };
+    const normalized = passportNumber.trim().toUpperCase().replace(/\s+/g, "");
+    if (normalized.length < 4) return { ok: false, notFound: true };
+    try {
+      const res = await fetch(
+        `${STRAPI_BASE_URL}/api/lab-report-files/report?passportNumber=${encodeURIComponent(normalized)}`,
+      );
+      if (res.status === 404) return { ok: false, notFound: true };
+      if (!res.ok) {
+        const json = (await res.json().catch(() => ({}))) as { error?: string };
+        return { ok: false, error: json.error || res.statusText };
+      }
+      const blob = await res.blob();
+      if (!blob.type.includes("pdf") && blob.size < 100) {
+        return { ok: false, notFound: true };
+      }
+      return { ok: true, blob };
+    } catch (e) {
+      return { ok: false, error: String(e) };
+    }
+  },
+
   /** Public: verify passport + phone and receive PDF bytes. */
   download: async (
     passportNumber: string,
