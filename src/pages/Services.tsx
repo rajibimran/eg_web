@@ -406,9 +406,9 @@ const Services = () => {
                         <td key={key} className="p-[16px] text-center">
                           {typeof val === "boolean" ? (
                             val ? (
-                              <Check className="mx-auto h-5 w-5 text-accent" />
+                              <Check className="mx-auto h-4 w-4 text-green-600" />
                             ) : (
-                              <XIcon className="mx-auto h-5 w-5 text-muted-foreground/40" />
+                              <XIcon className="mx-auto h-4 w-4 text-red-600" />
                             )
                           ) : (
                             <span className="font-body text-sm text-foreground">{val}</span>

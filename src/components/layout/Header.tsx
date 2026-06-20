@@ -249,18 +249,18 @@ const Header = () => {
         style={{ WebkitBackdropFilter: "blur(12px)", backdropFilter: "blur(12px)" }}
       >
         {/* Mobile / tablet: logo left, hamburger right */}
-        <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-3 sm:px-6 lg:hidden">
+        <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-3 sm:px-6 lg:hidden">
           <Link
             to="/"
             className="flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.03]"
             aria-label={`${siteConfig.siteName} home`}
           >
             <img
-              src={siteConfig.logo}
-              alt={`${siteConfig.siteName} logo`}
-              className="h-9 w-auto max-w-12 object-contain sm:h-10 sm:max-w-14"
-              width={40}
-              height={40}
+                src={siteConfig.logo}
+                alt={`${siteConfig.siteName} logo`}
+                className="h-10 w-auto max-w-[140px] object-contain sm:h-11 sm:max-w-[150px]"
+                width={150}
+                height={56}
             />
           </Link>
           <Sheet open={open} onOpenChange={setOpen}>
@@ -367,7 +367,7 @@ const Header = () => {
         </div>
 
         {/* Desktop: grid keeps logo centered without overlapping nav links */}
-        <div className="mx-auto hidden h-20 max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 lg:grid xl:px-8">
+        <div className="mx-auto hidden h-24 max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 lg:grid xl:h-28 xl:px-8">
           <nav
             className="flex min-w-0 items-center justify-end gap-x-5 xl:gap-x-9"
             aria-label="Main navigation left"
@@ -382,11 +382,11 @@ const Header = () => {
               aria-label={`${siteConfig.siteName} home`}
             >
               <img
-                src={siteConfig.logo}
-                alt={`${siteConfig.siteName} logo`}
-                className="h-14 max-h-[60px] w-auto max-w-[60px] object-contain xl:max-h-16 xl:max-w-[64px]"
-                width={64}
-                height={64}
+                  src={siteConfig.logo}
+                  alt={`${siteConfig.siteName} logo`}
+                  className="h-14 w-auto max-w-[170px] object-contain xl:h-16 xl:max-w-[190px]"
+                  width={190}
+                  height={70}
               />
             </Link>
           </div>

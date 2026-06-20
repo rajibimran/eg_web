@@ -233,9 +233,16 @@ const CountryGuidelinesSection = () => {
               value={country.id}
               className="rounded-xl border border-border/70 bg-card px-3 !border-b-0 shadow-sm sm:px-5 data-[state=open]:shadow-md data-[state=open]:ring-1 data-[state=open]:ring-secondary/15"
             >
-              <AccordionTrigger className="gap-2 py-3 text-left font-heading text-sm font-semibold hover:no-underline data-[state=open]:text-secondary sm:py-3.5 sm:text-base [&[data-state=open]>svg]:text-secondary">
-                <span className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3">
-                  <img src={country.flag} alt="" className="h-5 w-8 shrink-0 rounded-sm object-cover ring-1 ring-border/80 sm:h-6 sm:w-9" />
+              <AccordionTrigger className="gap-2 py-2 text-left font-heading text-sm font-semibold hover:no-underline data-[state=open]:text-secondary sm:py-3.5 sm:text-base [&[data-state=open]>svg]:text-secondary">
+                <span className="flex min-w-0 flex-1 items-center gap-4">
+                  <span className="flex h-8 w-16 shrink-0 items-center justify-center overflow-hidden sm:h-12 sm:w-24">
+                    <img
+                        src={country.flag}
+                        alt={`${country.name} flag`}
+                        className="h-full w-full object-contain"
+                    />
+                  </span>
+
                   <span className="flex min-w-0 flex-col items-start gap-0 text-left sm:flex-row sm:items-baseline sm:gap-2">
                     <span className="break-words">{country.name}</span>
                   </span>
