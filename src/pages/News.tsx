@@ -200,14 +200,31 @@ const News = () => {
 
           <div className="mb-6">
             <label className="relative block max-w-md mx-auto sm:mx-0">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
+              <Search
+                  className="pointer-events-none absolute left-3.5 top-1/2 z-10 h-3 w-3 -translate-y-1/2 text-muted-foreground"
+                  aria-hidden="true"
+              />
               <Input
-                type="search"
-                placeholder="Search headlines…"
-                value={searchQ}
-                onChange={(e) => setSearchQ(e.target.value)}
-                className="h-10 rounded-full border-2 border-border/80 pl-10 font-body text-sm shadow-sm focus-visible:ring-secondary"
-                aria-label="Search news posts"
+                  type="text"
+                  inputMode="search"
+                  placeholder="Search news by title, excerpt, or category…"
+                  value={searchQ}
+                  onChange={(e) => setSearchQ(e.target.value)}
+                  className="
+                    h-11
+                    w-full
+                    rounded-xl
+                    border
+                    bg-background
+                    pl-11
+                    pr-4
+                    text-sm
+                    leading-none
+                    placeholder:text-muted-foreground/70
+                    focus-visible:ring-2
+                    focus-visible:ring-primary/30
+                  "
+                  aria-label="Search news"
               />
             </label>
           </div>

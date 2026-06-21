@@ -1244,7 +1244,7 @@ export interface SiteConfig {
 export const defaultSiteConfig: SiteConfig = {
   siteName: "Unicare Medical Services",
   tagline: "GCC Approved Medical Center",
-  logo: "https://unicaremedicalbd.co/assets/img/logo_unicare.png",
+  logo: "https://dev.evergreenhealthbd.net/uploads/unicare_logo_22c7f4bf97.png",
   footerLogo: "",
   phone: "+88 02 48316027",
   email: "unicaremedicalbd@gmail.com",

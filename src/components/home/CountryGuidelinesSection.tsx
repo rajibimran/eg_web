@@ -234,17 +234,17 @@ const CountryGuidelinesSection = () => {
               className="rounded-xl border border-border/70 bg-card px-3 !border-b-0 shadow-sm sm:px-5 data-[state=open]:shadow-md data-[state=open]:ring-1 data-[state=open]:ring-secondary/15"
             >
               <AccordionTrigger className="gap-2 py-2 text-left font-heading text-sm font-semibold hover:no-underline data-[state=open]:text-secondary sm:py-3.5 sm:text-base [&[data-state=open]>svg]:text-secondary">
-                <span className="flex min-w-0 flex-1 items-center gap-4">
-                  <span className="flex h-8 w-16 shrink-0 items-center justify-center overflow-hidden sm:h-12 sm:w-24">
+                <span className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+                  <span className="flex h-4 w-12 shrink-0 items-center justify-center overflow-hidden sm:h-9 sm:w-16">
                     <img
                         src={country.flag}
                         alt={`${country.name} flag`}
-                        className="h-full w-full object-contain"
+                        className="h-full w-full object-fill"
                     />
                   </span>
 
                   <span className="flex min-w-0 flex-col items-start gap-0 text-left sm:flex-row sm:items-baseline sm:gap-2">
-                    <span className="break-words">{country.name}</span>
+                    <span className="break-words leading-snug">{country.name}</span>
                   </span>
                 </span>
               </AccordionTrigger>

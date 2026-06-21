@@ -156,32 +156,35 @@ const Contact = () => {
             <div className="flex flex-col gap-4">
               <div className="rounded-2xl border border-border/70 bg-card/80 p-4 shadow-sm backdrop-blur-sm sm:p-5">
                 <h2 className="font-heading text-base font-semibold text-primary">Contact</h2>
-                <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="mt-3 grid grid-cols-1 gap-3">
                   {contactRows.map(({ icon: Icon, label, value, href }) => (
-                    <div
-                      key={label}
-                      className={cn(
-                        "flex gap-2.5 rounded-xl border border-border/50 bg-background/60 px-3 py-2.5",
-                        (label === "Phone" || label === "Email") && "sm:col-span-2",
-                      )}
-                    >
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
-                        <Icon className="h-4 w-4 text-secondary" aria-hidden />
+                      <div
+                          key={label}
+                          className="flex gap-2.5 rounded-xl border border-border/50 bg-background/60 px-3 py-2.5"
+                      >
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+                          <Icon className="h-4 w-4 text-secondary" aria-hidden />
+                        </div>
+
+                        <div className="min-w-0 flex-1">
+                          <p className="font-heading text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                            {label}
+                          </p>
+
+                          {href ? (
+                              <a
+                                  href={href}
+                                  className="mt-0.5 block break-words font-body text-sm leading-snug text-foreground underline-offset-2 hover:text-secondary hover:underline"
+                              >
+                                {value}
+                              </a>
+                          ) : (
+                              <p className="font-body text-sm leading-snug text-foreground">
+                                {value}
+                              </p>
+                          )}
+                        </div>
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="font-heading text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">{label}</p>
-                        {href ? (
-                          <a
-                            href={href}
-                            className="mt-0.5 block break-words font-body text-sm leading-snug text-foreground underline-offset-2 hover:text-secondary hover:underline"
-                          >
-                            {value}
-                          </a>
-                        ) : (
-                          <p className="font-body text-sm leading-snug text-foreground">{value}</p>
-                        )}
-                      </div>
-                    </div>
                   ))}
                 </div>
               </div>
