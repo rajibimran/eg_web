@@ -1764,9 +1764,43 @@ export const bookingRequestsApi = {
 };
 
 function parseContentDispositionFilename(header: string | null): string | undefined {
-  if (!header) return undefined;
-  const m = /filename\*?=(?:UTF-8''|")?([^";\n]+)/i.exec(header);
-  if (m?.[1]) return decodeURIComponent(m[1].replace(/"/g, "").trim());
+  if (!header) {
+    console.log('No Content-Disposition header');
+    return undefined;
+  }
+  console.log('Parsing Content-Disposition:', header);
+
+  // Try standard filename="..." pattern
+  let m = /filename="([^"]+)"/i.exec(header);
+  if (m?.[1]) {
+    console.log('Found standard filename:', m[1]);
+    return m[1];
+  }
+
+  // Try filename=... pattern (without quotes)
+  m = /filename=([^;\s]+)/i.exec(header);
+  if (m?.[1]) {
+    console.log('Found unquoted filename:', m[1]);
+    return m[1].replace(/^"|"$/g, '');
+  }
+
+  // Try UTF-8 encoded filename*=UTF-8''... pattern
+  m = /filename\*=UTF-8''(.+)/i.exec(header);
+  if (m?.[1]) {
+    const decoded = decodeURIComponent(m[1].trim());
+    console.log('Found UTF-8 encoded filename:', decoded);
+    return decoded;
+  }
+
+  // Try filename*=... pattern (any encoding)
+  m = /filename\*=(?:UTF-8'')?([^;\s]+)/i.exec(header);
+  if (m?.[1]) {
+    const decoded = decodeURIComponent(m[1].replace(/"/g, "").trim());
+    console.log('Found encoded filename:', decoded);
+    return decoded;
+  }
+
+  console.log('No filename match found');
   return undefined;
 }
 
@@ -1899,29 +1933,40 @@ export const labReportFilesApi = {
 
   /** Public: lookup report PDF by passport number (reports/{PASSPORT}.pdf on server). */
   reportByPassport: async (
-    passportNumber: string,
+      passportNumber: string,
   ): Promise<
-    | { ok: true; blob: Blob }
-    | { ok: false; notFound: true }
-    | { ok: false; error: string }
+      | { ok: true; blob: Blob; filename?: string }
+      | { ok: false; notFound: true }
+      | { ok: false; error: string }
   > => {
     if (!STRAPI_BASE_URL) return { ok: false, error: "Strapi is not configured." };
     const normalized = passportNumber.trim().toUpperCase().replace(/\s+/g, "");
     if (normalized.length < 4) return { ok: false, notFound: true };
     try {
       const res = await fetch(
-        `${STRAPI_BASE_URL}/api/lab-report-files/report?passportNumber=${encodeURIComponent(normalized)}`,
+          `${STRAPI_BASE_URL}/api/lab-report-files/report?passportNumber=${encodeURIComponent(normalized)}`,
       );
       if (res.status === 404) return { ok: false, notFound: true };
       if (!res.ok) {
         const json = (await res.json().catch(() => ({}))) as { error?: string };
         return { ok: false, error: json.error || res.statusText };
       }
+
+      // Log headers for debugging
+      console.log('Response headers:');
+      res.headers.forEach((value, key) => {
+        console.log(`  ${key}: ${value}`);
+      });
+
       const blob = await res.blob();
       if (!blob.type.includes("pdf") && blob.size < 100) {
         return { ok: false, notFound: true };
       }
-      return { ok: true, blob };
+      const contentDisposition = res.headers.get("Content-Disposition");
+      console.log('Content-Disposition header:', contentDisposition);
+      const filename = parseContentDispositionFilename(contentDisposition);
+      console.log('Parsed filename:', filename);
+      return { ok: true, blob, filename };
     } catch (e) {
       return { ok: false, error: String(e) };
     }
